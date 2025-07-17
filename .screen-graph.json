@@ -30,8 +30,7 @@
       "label": "Dashboard",
       "routes": [
         "/dashboard"
-      ],
-      "dataModelId": "681:926"
+      ]
     },
     {
       "id": "src/screens/Getstarted/Getstarted.jsx",
@@ -254,81 +253,17 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 25,
-          "endLine": 25,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 51,
-          "endLine": 51,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:122:33-to-src/screens/RequestFeedback/RequestFeedback.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
       "data": {
         "viaRoute": "/request-feedback",
         "trigger": {
-          "element": "navigate(\"/request-feedback\")",
-          "line": 72,
-          "endLine": 72,
-          "column": 27,
-          "endColumn": 56,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/Notification/screens/Notification.jsx",
-      "data": {
-        "viaRoute": "/notifications",
-        "trigger": {
-          "element": "navigate(\"/notifications\")",
-          "line": 102,
-          "endLine": 102,
-          "column": 23,
-          "endColumn": 49,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
-      "data": {
-        "viaRoute": "/edit-profile",
-        "trigger": {
-          "element": "navigate(\"/edit-profile\")",
-          "line": 128,
-          "endLine": 128,
-          "column": 23,
-          "endColumn": 48,
+          "element": "navigate('/request-feedback')",
+          "line": 122,
+          "endLine": 122,
+          "column": 33,
+          "endColumn": 62,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
         }
       }
@@ -366,47 +301,31 @@
       }
     },
     {
-      "id": "src/screens/Dashboard/Dashboard.jsx:65:31-to-src/screens/SetupProfile/SetupProfile.jsx",
+      "id": "src/screens/Dashboard/Dashboard.jsx:115:29-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/screens/SetupProfile/SetupProfile.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
-        "viaRoute": "/setupprofile",
+        "viaRoute": "/edit-profile",
         "trigger": {
-          "element": "navigate(\"/setupprofile\")",
-          "line": 65,
-          "endLine": 65,
-          "column": 31,
-          "endColumn": 56,
+          "element": "navigate('/edit-profile')",
+          "line": 115,
+          "endLine": 115,
+          "column": 29,
+          "endColumn": 54,
           "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
         }
       }
     },
     {
-      "id": "src/screens/Dashboard/Dashboard.jsx:73:31-to-src/screens/SetupProfile/SetupProfile.jsx",
-      "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/screens/SetupProfile/SetupProfile.jsx",
-      "data": {
-        "viaRoute": "/setupprofile",
-        "trigger": {
-          "element": "navigate(\"/setupprofile\")",
-          "line": 73,
-          "endLine": 73,
-          "column": 31,
-          "endColumn": 56,
-          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Dashboard/Dashboard.jsx:81:29-to-src/routes/Settings/screens/Settings.jsx",
+      "id": "src/screens/Dashboard/Dashboard.jsx:130:29-to-src/routes/Settings/screens/Settings.jsx",
       "source": "src/screens/Dashboard/Dashboard.jsx",
       "target": "src/routes/Settings/screens/Settings.jsx",
       "data": {
         "viaRoute": "/settings",
         "trigger": {
-          "element": "navigate(\"/settings\")",
-          "line": 81,
-          "endLine": 81,
+          "element": "navigate('/settings')",
+          "line": 130,
+          "endLine": 130,
           "column": 29,
           "endColumn": 50,
           "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
@@ -414,161 +333,33 @@
       }
     },
     {
-      "id": "src/screens/Dashboard/Dashboard.jsx:110:10-to-src/screens/RequestFeedback/RequestFeedback.jsx",
-      "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
-      "data": {
-        "viaRoute": "/request-feedback",
-        "trigger": {
-          "element": "<Link to=\"/request-feedback\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.4 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-26@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Request Feedback</h3>\n              <span className=\"text-xs text-gray-500\">1/5 completed</span>\n            </motion.div>\n          </Link>",
-          "line": 110,
-          "endLine": 127,
-          "column": 10,
-          "endColumn": 17,
-          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Dashboard/Dashboard.jsx:129:10-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "id": "src/screens/Dashboard/Dashboard.jsx:225:14-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx",
       "source": "src/screens/Dashboard/Dashboard.jsx",
       "target": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
       "data": {
         "viaRoute": "/self-assessment",
         "trigger": {
-          "element": "<Link to=\"/self-assessment\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.5 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-28@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Self Assessment</h3>\n              <span className=\"text-xs text-gray-500\">Try it now</span>\n            </motion.div>\n          </Link>",
-          "line": 129,
-          "endLine": 146,
-          "column": 10,
-          "endColumn": 17,
-          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Dashboard/Dashboard.jsx:151:10-to-src/screens/Journals/Journals.jsx",
-      "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/screens/Journals/Journals.jsx",
-      "data": {
-        "viaRoute": "/journals",
-        "trigger": {
-          "element": "<Link to=\"/journals\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.6 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3\"\n                alt=\"Open book\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/open-book@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Journal Stories</h3>\n              <span className=\"text-xs text-gray-500\">Write today</span>\n            </motion.div>\n          </Link>",
-          "line": 151,
-          "endLine": 168,
-          "column": 10,
-          "endColumn": 17,
-          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Dashboard/Dashboard.jsx:170:10-to-src/routes/Coaches/screens/Coaches.jsx",
-      "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/routes/Coaches/screens/Coaches.jsx",
-      "data": {
-        "viaRoute": "/coaches",
-        "trigger": {
-          "element": "<Link to=\"/coaches\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.7 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-27@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Coaches</h3>\n              <span className=\"text-xs text-gray-500\">Find support</span>\n            </motion.div>\n          </Link>",
-          "line": 170,
-          "endLine": 187,
-          "column": 10,
-          "endColumn": 17,
-          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/screens/Dashboard/Dashboard.jsx:254:14-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx",
-      "source": "src/screens/Dashboard/Dashboard.jsx",
-      "target": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
-      "data": {
-        "viaRoute": "/self-assessment",
-        "trigger": {
-          "element": "<Link to=\"/self-assessment\" className=\"ml-4 text-sm text-[#74a4ee] font-medium\">View Details</Link>",
-          "line": 254,
-          "endLine": 254,
+          "element": "<Link to=\"/self-assessment\" className=\"text-sm text-blue-600 font-medium\">\n                Take Assessment Again →\n              </Link>",
+          "line": 225,
+          "endLine": 227,
           "column": 14,
-          "endColumn": 113,
+          "endColumn": 21,
           "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
         }
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 25,
-          "endLine": 25,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 51,
-          "endLine": 51,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:122:33-to-src/screens/RequestFeedback/RequestFeedback.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
       "data": {
         "viaRoute": "/request-feedback",
         "trigger": {
-          "element": "navigate(\"/request-feedback\")",
-          "line": 72,
-          "endLine": 72,
-          "column": 27,
-          "endColumn": 56,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/Notification/screens/Notification.jsx",
-      "data": {
-        "viaRoute": "/notifications",
-        "trigger": {
-          "element": "navigate(\"/notifications\")",
-          "line": 102,
-          "endLine": 102,
-          "column": 23,
-          "endColumn": 49,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
-      "data": {
-        "viaRoute": "/edit-profile",
-        "trigger": {
-          "element": "navigate(\"/edit-profile\")",
-          "line": 128,
-          "endLine": 128,
-          "column": 23,
-          "endColumn": 48,
+          "element": "navigate('/request-feedback')",
+          "line": 122,
+          "endLine": 122,
+          "column": 33,
+          "endColumn": 62,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
         }
       }
@@ -798,81 +589,17 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 25,
-          "endLine": 25,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 51,
-          "endLine": 51,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:122:33-to-src/screens/RequestFeedback/RequestFeedback.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
       "data": {
         "viaRoute": "/request-feedback",
         "trigger": {
-          "element": "navigate(\"/request-feedback\")",
-          "line": 72,
-          "endLine": 72,
-          "column": 27,
-          "endColumn": 56,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/Notification/screens/Notification.jsx",
-      "data": {
-        "viaRoute": "/notifications",
-        "trigger": {
-          "element": "navigate(\"/notifications\")",
-          "line": 102,
-          "endLine": 102,
-          "column": 23,
-          "endColumn": 49,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
-      "data": {
-        "viaRoute": "/edit-profile",
-        "trigger": {
-          "element": "navigate(\"/edit-profile\")",
-          "line": 128,
-          "endLine": 128,
-          "column": 23,
-          "endColumn": 48,
+          "element": "navigate('/request-feedback')",
+          "line": 122,
+          "endLine": 122,
+          "column": 33,
+          "endColumn": 62,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
         }
       }
@@ -910,81 +637,17 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 25,
-          "endLine": 25,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/screens/Dashboard/Dashboard.jsx",
-      "data": {
-        "viaRoute": "/dashboard",
-        "trigger": {
-          "element": "navigate(\"/dashboard\")",
-          "line": 51,
-          "endLine": 51,
-          "column": 23,
-          "endColumn": 45,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:122:33-to-src/screens/RequestFeedback/RequestFeedback.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
       "data": {
         "viaRoute": "/request-feedback",
         "trigger": {
-          "element": "navigate(\"/request-feedback\")",
-          "line": 72,
-          "endLine": 72,
-          "column": 27,
-          "endColumn": 56,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/Notification/screens/Notification.jsx",
-      "data": {
-        "viaRoute": "/notifications",
-        "trigger": {
-          "element": "navigate(\"/notifications\")",
-          "line": 102,
-          "endLine": 102,
-          "column": 23,
-          "endColumn": 49,
-          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
-        }
-      }
-    },
-    {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
-      "source": "src/screens/Journals/Journals.jsx",
-      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
-      "data": {
-        "viaRoute": "/edit-profile",
-        "trigger": {
-          "element": "navigate(\"/edit-profile\")",
-          "line": 128,
-          "endLine": 128,
-          "column": 23,
-          "endColumn": 48,
+          "element": "navigate('/request-feedback')",
+          "line": 122,
+          "endLine": 122,
+          "column": 33,
+          "endColumn": 62,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
         }
       }
