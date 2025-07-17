@@ -19,21 +19,21 @@ export const RequestFeedback = () => {
   const handleSendRequest = () => {
     if (selectedTemplate) {
       if (selectedTemplate === "Personal Growth") {
-        navigate("/feedback/personal-growth");
+        navigate("/dashboard/request-feedback/personal-growth");
       } else if (selectedTemplate === "Emotional Intelligence") {
-        navigate("/feedback/emotional-intelligence");
+        navigate("/dashboard/request-feedback/emotional-intelligence");
       } else if (selectedTemplate === "Relationship") {
-        navigate("/feedback/relationship");
+        navigate("/dashboard/request-feedback/relationship");
       } else if (selectedTemplate === "Mental Health") {
-        navigate("/feedback/mental-health");
+        navigate("/dashboard/request-feedback/mental-health");
       } else if (selectedTemplate === "Communication") {
-        navigate("/feedback/communication");
+        navigate("/dashboard/request-feedback/communication");
       } else if (selectedTemplate === "Values") {
-        navigate("/feedback/values");
+        navigate("/dashboard/request-feedback/values");
       } else if (selectedTemplate === "Conflict Resolution") {
-        navigate("/feedback/conflict-resolution");
+        navigate("/dashboard/request-feedback/conflicts-resolution");
       } else if (selectedTemplate === "Romantic") {
-        navigate("/feedback/romantic");
+        navigate("/dashboard/request-feedback/romantic");
       } else {
         alert(`Feedback request for "${selectedTemplate}" has been sent!`);
         navigate("/dashboard");

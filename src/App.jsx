@@ -14,6 +14,7 @@ import { LoginSignup } from "./screens/LoginSignup";
 import { RequestFeedback } from "./screens/RequestFeedback";
 import { SetupProfile } from "./screens/SetupProfile";
 import { SplashScreen } from "./screens/SplashScreen";
+import { FeedbackFormContainer } from "./components/FeedbackForm/FeedbackFormContainer";
 
 // Import route components
 import { SelfAssessement } from "./routes/SelfAssessement/screens/SelfAssessement";
@@ -178,6 +179,10 @@ const router = createBrowserRouter([
   {
     path: "/feedback/form/:formId",
     element: <FeedbackFormViewer />,
+  },
+  {
+    path: "/dashboard/request-feedback/:emotion",
+    element: <FeedbackFormContainer />,
   },
   {
     path: "/messages",

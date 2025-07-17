@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
+import { BackButton } from "../../components/UI/BackButton";
 import { FooterNavBar } from "../../components/FooterNavBar";
 
 export const Messages = () => {
@@ -190,23 +191,7 @@ export const Messages = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] pt-12 pb-6">
         <div className="flex items-center justify-between px-6">
-          <motion.button
-            className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg"
-            whileTap={{ scale: 0.9 }}
-            onClick={handleGoBack}
-          >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 12H5M12 19L5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </motion.button>
-          <h1 className="text-white text-xl font-bold">Messages</h1>
-          <div className="w-12" />
-        </div>
-        <div className="text-center mt-4">
-          <p className="text-white/80">Feedback responses from your forms</p>
-        </div>
-      </div>
-
+          <BackButton onClick={handleGoBack} style="dark" />
       {/* Messages List */}
       <div className="px-6 -mt-3 pb-24">
         {messages.length > 0 ? (
