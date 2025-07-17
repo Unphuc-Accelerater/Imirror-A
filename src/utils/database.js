@@ -4,7 +4,7 @@ class Database {
     this.tables = {
       users: 'imirror_users',
       feedbackForms: 'imirror_feedback_forms',
-      responses: 'imirror_responses',
+      feedbackResponses: 'imirror_feedback_responses',
       notifications: 'imirror_notifications',
       sessions: 'imirror_sessions'
     };
@@ -81,7 +81,7 @@ class Database {
   }
 
   submitResponse(formId, responseData) {
-    const response = this.create(this.tables.responses, {
+    const response = this.create(this.tables.feedbackResponses, {
       formId,
       ...responseData,
       ipAddress: '192.168.1.1' // Simulated
@@ -99,7 +99,7 @@ class Database {
   }
 
   getFormResponses(formId) {
-    const responses = this.getAll(this.tables.responses);
+    const responses = this.getAll(this.tables.feedbackResponses);
     return responses.filter(response => response.formId === formId);
   }
 
@@ -141,6 +141,14 @@ class Database {
         await new Promise(resolve => setTimeout(resolve, 400));
         const responses = this.getFormResponses(formId);
         return { success: true, data: responses };
+      },
+
+      // Get all feedback responses
+      getAll: async () => {
+        await new Promise(resolve => setTimeout(resolve, 400));
+        
+        const responses = this.getAll(this.tables.feedbackResponses);
+        return responses;
       },
 
       share: async (formId, method) => {
