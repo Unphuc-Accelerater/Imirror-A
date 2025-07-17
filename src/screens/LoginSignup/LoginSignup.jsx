@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { Component } from "../../components/Component";
-import { ByContinuingYou } from "./sections/ByContinuingYou";
-import { NavigationBarLarge } from "./sections/NavigationBarLarge";
-import { motion } from "framer-motion";
 
 export const LoginSignup = () => {
   const navigate = useNavigate();
@@ -11,21 +9,10 @@ export const LoginSignup = () => {
   const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
   const [isContinueEnabled, setIsContinueEnabled] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
-  const inputRef = useRef(null);
 
   useEffect(() => {
-    // Enable continue button only when exactly 10 digits are entered
     setIsContinueEnabled(phoneNumber.length === 10);
   }, [phoneNumber]);
-
-  useEffect(() => {
-    // Auto-focus and show keyboard when component mounts
-    if (inputRef.current) {
-      setTimeout(() => {
-        setIsKeyboardVisible(true);
-      }, 500);
-    }
-  }, []);
 
   const handlePhoneNumberChange = (digit) => {
     if (phoneNumber.length < 10) {
@@ -39,165 +26,207 @@ export const LoginSignup = () => {
 
   const handleContinue = () => {
     if (isContinueEnabled) {
-      navigate("/enterotp");
+      navigate("/enterotp", { state: { phoneNumber } });
     }
   };
 
   const handleInputFocus = () => {
-    setIsKeyboardVisible(true);
     setIsFocused(true);
+    setIsKeyboardVisible(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsFocused(false);
+  };
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  const renderKeypad = () => {
+    const keypadButtons = [
+      ['1', '2', '3'],
+      ['4', '5', '6'],
+      ['7', '8', '9'],
+      ['', '0', 'DEL']
+    ];
+
+    return (
+      <motion.div
+        className="fixed bottom-0 left-0 right-0 bg-gray-100 rounded-t-3xl shadow-2xl z-50 p-6"
+        initial={{ y: "100%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      >
+        <div className="flex justify-center mb-4">
+          <div className="w-12 h-1 bg-gray-300 rounded-full" />
+        </div>
+        
+        <div className="flex justify-end mb-4">
+          <motion.button
+            className="px-6 py-2 bg-[#74a4ee] rounded-full text-white font-medium"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsKeyboardVisible(false)}
+          >
+            Done
+          </motion.button>
+        </div>
+
+        <div className="grid grid-cols-3 gap-4 max-w-xs mx-auto">
+          {keypadButtons.map((row, rowIndex) => (
+            row.map((key, keyIndex) => {
+              if (key === '') {
+                return <div key={`${rowIndex}-${keyIndex}`} className="h-14" />;
+              }
+              
+              return (
+                <motion.button
+                  key={`${rowIndex}-${keyIndex}`}
+                  className={`h-14 rounded-2xl font-semibold text-xl flex items-center justify-center ${
+                    key === 'DEL' 
+                      ? 'bg-red-100 text-red-600' 
+                      : 'bg-white text-gray-800 shadow-sm'
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    if (key === 'DEL') {
+                      handleBackspace();
+                    } else {
+                      handlePhoneNumberChange(key);
+                    }
+                  }}
+                >
+                  {key === 'DEL' ? '⌫' : key}
+                </motion.button>
+              );
+            })
+          ))}
+        </div>
+      </motion.div>
+    );
   };
 
   return (
-    <div
-      className="bg-white flex flex-row justify-center w-full"
-      data-model-id="680:1706"
-    >
-      <div className="bg-white overflow-hidden border-2 border-solid border-[#74a4ee] w-[380px] h-[801px]">
-        <div className="relative w-[390px] h-[844px] overflow-hidden bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)]">
-          <div className="absolute w-[388px] h-[436px] top-[100px] left-0.5 bg-white shadow-[0px_18px_40px_#0000001a,0px_72px_72px_#00000017,0px_163px_98px_#0000000d,0px_289px_116px_#00000003,0px_452px_127px_transparent]">
-            <motion.button 
-              className={`all-[unset] box-border absolute w-[327px] h-12 top-[322px] left-[30px] rounded-[48px] ${isContinueEnabled ? 'bg-[#74a4ee]' : 'bg-[#a8c9f8] cursor-not-allowed'}`}
-              whileHover={isContinueEnabled ? { scale: 1.03, boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)" } : {}}
-              whileTap={isContinueEnabled ? { scale: 0.97 } : {}}
-              onClick={handleContinue}
-            >
-              <div className="absolute h-4 top-[15px] left-[129px] font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-skywhite text-[length:var(--regular-none-medium-font-size)] text-center tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] whitespace-nowrap [font-style:var(--regular-none-medium-font-style)]">
-                Continue
-              </div>
-            </motion.button>
-
-            <div 
-              className={`absolute w-[327px] h-12 top-[167px] left-[30px] rounded-lg cursor-text ${isFocused ? 'ring-2 ring-[#74a4ee]' : ''}`} 
-              onClick={handleInputFocus}
-              ref={inputRef}
-            >
-              <div className="relative w-[329px] h-[50px] -top-px -left-px bg-skywhite rounded-lg border border-solid border-skylight">
-                <div className="inline-flex items-center gap-4 relative top-4 left-4">
-                  <div className="inline-flex items-start gap-1 relative flex-[0_0_auto]">
-                    <div className="relative w-fit mt-[-1.00px] [font-family:'Inter',Helvetica] font-normal text-inkdarkest text-base tracking-[0] leading-4 whitespace-nowrap">
-                      +91
-                    </div>
-
-                    <div className="relative w-4 h-4">
-                      <img
-                        className="absolute w-2.5 h-1.5 top-[5px] left-[3px]"
-                        alt="Vector"
-                        src="https://c.animaapp.com/hUOULd8k/img/vector-6.svg"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="relative w-[217px] mt-[-1.00px] font-regular-none-regular font-[number:var(--regular-none-regular-font-weight)] text-inkdarkest text-[length:var(--regular-none-regular-font-size)] tracking-[var(--regular-none-regular-letter-spacing)] leading-[var(--regular-none-regular-line-height)] [font-style:var(--regular-none-regular-font-style)] flex items-center">
-                    {phoneNumber || "Mobile number"}
-                    {isFocused && phoneNumber.length < 10 && (
-                      <motion.div 
-                        className="w-[2px] h-[20px] bg-inkdarkest ml-1"
-                        animate={{ opacity: [1, 0, 1] }}
-                        transition={{ repeat: Infinity, duration: 1 }}
-                      />
-                    )}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <p className="absolute w-[327px] top-[235px] left-[46px] font-tiny-normal-regular font-[number:var(--tiny-normal-regular-font-weight)] text-inklight text-[length:var(--tiny-normal-regular-font-size)] tracking-[var(--tiny-normal-regular-letter-spacing)] leading-[var(--tiny-normal-regular-line-height)] [font-style:var(--tiny-normal-regular-font-style)]">
-              You will receive an SMS verification that may apply message and
-              data rates.
-            </p>
-
-            <div className="absolute w-[375px] h-[93px] top-[37px] left-1.5">
-              <NavigationBarLarge />
-              <Component
-                className="!h-[69px] !opacity-[0.57] !absolute !left-[296px] !bg-white !w-[65px] !top-0"
-                overlapGroupClassName="!h-[67px] !w-[63px]"
-                rectangleClassName="!h-[54px] !w-[34px] !top-1"
-                rectangleClassNameOverride="!h-[54px] !left-[17px] !w-[34px] !top-3.5"
-                star="https://c.animaapp.com/hUOULd8k/img/star-5-3.svg"
-                starClassName="!h-4 !left-[47px] !w-4"
-              />
-            </div>
-
-            <ByContinuingYou />
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex flex-col">
+      {/* Status Bar */}
+      <div className="h-11 bg-white/80 backdrop-blur-sm flex items-center justify-between px-4 text-sm font-medium text-gray-900">
+        <span>9:41</span>
+        <div className="flex items-center space-x-1">
+          <div className="w-4 h-2.5 bg-gray-900 rounded-sm" />
+          <div className="w-4 h-3 border border-gray-900 rounded-sm">
+            <div className="w-2.5 h-1.5 bg-gray-900 rounded-sm m-0.5" />
           </div>
-
-          <div className="absolute w-[390px] h-[47px] -top-px -left-0.5 bg-white">
-            <div className="h-8 -top-0.5 left-[113px] absolute w-[164px]">
-              <img
-                className="h-[29px] top-[3px] left-0 absolute w-[164px]"
-                alt="Notch"
-                src="https://c.animaapp.com/hUOULd8k/img/notch.svg"
-              />
-            </div>
-
-            <div className="absolute w-[54px] h-[21px] top-3.5 left-[27px]">
-              <div className="relative h-[21px] rounded-3xl">
-                <div className="absolute w-[54px] top-px left-0 font-default-bold-body font-[number:var(--default-bold-body-font-weight)] text-[#010101] text-[length:var(--default-bold-body-font-size)] text-center tracking-[var(--default-bold-body-letter-spacing)] leading-[var(--default-bold-body-line-height)] whitespace-nowrap [font-style:var(--default-bold-body-font-style)]">
-                  9:41
-                </div>
-              </div>
-            </div>
-
-            <img
-              className="absolute w-[77px] h-6 top-2 left-[286px]"
-              alt="Right side"
-              src="https://c.animaapp.com/hUOULd8k/img/right-side@2x.png"
-            />
-          </div>
-
-          {isKeyboardVisible && (
-            <motion.div 
-              className="absolute w-[387px] h-[287px] bottom-0 left-0 bg-skylight backdrop-blur-[40.77px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40.77px)_brightness(100%)]"
-              initial={{ y: 287 }}
-              animate={{ y: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            >
-              <div className="absolute w-[387px] h-[34px] top-[253px] left-0">
-                <div className="relative w-[134px] h-[5px] top-[21px] left-[127px] bg-inkdarkest rounded-[100px]" />
-              </div>
-
-              <div className="absolute w-[375px] h-[204px] top-1.5 left-1.5">
-                <motion.button
-                  className="absolute w-6 h-[18px] top-[172px] left-[307px]"
-                  whileTap={{ scale: 0.9 }}
-                  onClick={handleBackspace}
-                >
-                  <img
-                    className="w-full h-full"
-                    alt="Delete"
-                    src="https://c.animaapp.com/hUOULd8k/img/delete.svg"
-                  />
-                </motion.button>
-
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map((digit, index) => {
-                  const row = Math.floor(index / 3);
-                  const col = index % 3;
-                  const isZero = digit === 0;
-                  
-                  // Position for zero is special
-                  const top = isZero ? 159 : (row * 54);
-                  const left = isZero ? 127 : (col * 127);
-                  
-                  return (
-                    <motion.button
-                      key={digit}
-                      className={`absolute w-[121px] h-[45px] top-[${top}px] left-[${left}px] bg-[url(https://c.animaapp.com/hUOULd8k/img/key-background.svg)] bg-[100%_100%]`}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={() => handlePhoneNumberChange(digit.toString())}
-                    >
-                      <div className="top-[5px] [font-family:'SF_Pro_Display-Regular',Helvetica] absolute w-[121px] left-0 font-normal text-inkdarkest text-[25px] text-center tracking-[0.29px] leading-[normal]">
-                        {digit}
-                      </div>
-                    </motion.button>
-                  );
-                })}
-              </div>
-            </motion.div>
-          )}
         </div>
       </div>
+
+      {/* Header */}
+      <motion.div 
+        className="flex items-center justify-between p-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.button
+          className="w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm"
+          whileTap={{ scale: 0.9 }}
+          onClick={handleGoBack}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M12 19L5 12L12 5" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.button>
+        
+        <Component
+          className="!h-10 !w-10"
+          overlapGroupClassName="!h-[38px] !w-[36px]"
+          rectangleClassName="!h-[30px] !w-[20px] !top-1"
+          rectangleClassNameOverride="!h-[30px] !left-2 !w-[20px] !top-2"
+          star="https://c.animaapp.com/hUOULd8k/img/star-5-1.svg"
+          starClassName="!h-[8px] !left-[28px] !w-[8px]"
+        />
+      </motion.div>
+
+      {/* Main Content */}
+      <div className="flex-1 px-6">
+        <motion.div
+          className="bg-white rounded-3xl shadow-xl p-8 mx-auto max-w-sm"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          {/* Welcome Text */}
+          <div className="text-center mb-8">
+            <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome</h1>
+            <p className="text-gray-600">Log in to your account</p>
+          </div>
+
+          {/* Phone Input */}
+          <motion.div
+            className={`relative mb-6 p-4 bg-gray-50 rounded-2xl border-2 transition-colors ${
+              isFocused ? 'border-[#74a4ee] bg-blue-50' : 'border-gray-200'
+            }`}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleInputFocus}
+          >
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-gray-700 font-medium">+91</span>
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L6 6L11 1" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              
+              <div className="flex-1 flex items-center">
+                <span className={`text-lg ${phoneNumber ? 'text-gray-800' : 'text-gray-400'}`}>
+                  {phoneNumber || "Mobile number"}
+                </span>
+                {isFocused && (
+                  <motion.div 
+                    className="w-0.5 h-6 bg-[#74a4ee] ml-1"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ repeat: Infinity, duration: 1 }}
+                  />
+                )}
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Disclaimer */}
+          <p className="text-xs text-gray-500 mb-8 leading-relaxed">
+            You will receive an SMS verification that may apply message and data rates.
+          </p>
+
+          {/* Continue Button */}
+          <motion.button
+            className={`w-full h-14 rounded-2xl font-semibold text-lg transition-all ${
+              isContinueEnabled 
+                ? 'bg-[#74a4ee] text-white shadow-lg' 
+                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+            }`}
+            whileHover={isContinueEnabled ? { scale: 1.02 } : {}}
+            whileTap={isContinueEnabled ? { scale: 0.98 } : {}}
+            onClick={handleContinue}
+            disabled={!isContinueEnabled}
+          >
+            Continue
+          </motion.button>
+
+          {/* Terms */}
+          <p className="text-xs text-gray-500 text-center mt-6 leading-relaxed">
+            By continuing, you agree to our{' '}
+            <span className="text-[#74a4ee] font-medium">Terms of Service</span>{' '}
+            and{' '}
+            <span className="text-[#74a4ee] font-medium">Privacy Policy</span>.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Custom Keyboard */}
+      <AnimatePresence>
+        {isKeyboardVisible && renderKeypad()}
+      </AnimatePresence>
     </div>
   );
 };
