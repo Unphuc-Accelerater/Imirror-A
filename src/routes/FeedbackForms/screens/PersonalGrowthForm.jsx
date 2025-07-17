@@ -132,17 +132,19 @@ Best regards`;
           <h2 className="text-xl font-bold text-gray-800 mb-6">Customize Your Questions</h2>
           
           <div className="w-full overflow-hidden rounded-xl mb-6">
-            <iframe 
-              src="https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform?embedded=true" 
-              width="100%" 
-              height="500" 
-              frameBorder="0" 
-              marginHeight="0" 
-              marginWidth="0"
-              className="rounded-xl"
-            >
-              Loading…
-            </iframe>
+            <div className="relative" style={{ paddingTop: '120%' }}>
+              <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform?embedded=true" 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                marginHeight="0" 
+                marginWidth="0"
+                className="rounded-xl absolute top-0 left-0 w-full h-full"
+              >
+                Loading…
+              </iframe>
+            </div>
           </div>
 
           <p className="text-sm text-gray-600 mb-4">

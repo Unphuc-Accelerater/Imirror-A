@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { db } from '../../utils/database';
 import { 
-  getFormUrl, 
+  getPublicFormUrl, 
   getQuestions, 
   generateShareableLink,
   generateWhatsAppLink,
@@ -19,6 +19,7 @@ export const FeedbackFormContainer = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [formUrl, setFormUrl] = useState('');
+  const [editFormUrl, setEditFormUrl] = useState('');
   const [questions, setQuestions] = useState([]);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [userId, setUserId] = useState(null);
@@ -37,13 +38,17 @@ export const FeedbackFormContainer = () => {
         const currentUserId = parsedUserData?.id || 'anonymous';
         setUserId(currentUserId);
         
-        // Get form questions based on emotion
+        // Get form questions and URLs based on emotion
         const emotionQuestions = getQuestions(emotion);
         setQuestions(emotionQuestions);
         
-        // Generate shareable form URL
-        const url = generateShareableLink(emotion, currentUserId);
+        // Get public form URL for sharing and viewing
+        const url = getPublicFormUrl(emotion);
         setFormUrl(url);
+        
+        // Get edit form URL (only for the creator)
+        const editUrl = url.replace('/viewform', '/edit');
+        setEditFormUrl(editUrl);
         
         // Store form data in database
         const result = await storeFormData(db, currentUserId, emotion, url, emotionQuestions);
@@ -66,6 +71,7 @@ export const FeedbackFormContainer = () => {
 
   const handleCopyLink = async () => {
     try {
+      // Use the public viewform URL for sharing
       setCopying(true);
       await navigator.clipboard.writeText(formUrl);
       toast.success('Form link copied to clipboard!');
@@ -80,7 +86,12 @@ export const FeedbackFormContainer = () => {
   const handleShareWhatsApp = () => {
     try {
       setSharing(true);
-      const whatsappUrl = generateWhatsAppLink(emotion, userId);
+      // Generate WhatsApp share link with the public form URL
+      const message = `Hi! I'd love your honest feedback on my ${formatEmotionTitle(emotion).toLowerCase()}. Please take a moment to fill out this quick form: ${formUrl}
+
+Your feedback will be completely anonymous and will help me grow. Thank you!`;
+      
+      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
       toast.success('Opening WhatsApp with your form link');
     } catch (error) {
@@ -94,7 +105,21 @@ export const FeedbackFormContainer = () => {
   const handleShareEmail = () => {
     try {
       setSharing(true);
-      const emailUrl = generateEmailLink(emotion, userId);
+      // Generate email share link with the public form URL
+      const subject = `Request for ${formatEmotionTitle(emotion)} Feedback`;
+      const body = `Hi there,
+
+I'm working on improving my ${formatEmotionTitle(emotion).toLowerCase()} and would really value your honest feedback. Could you please take a few minutes to fill out this form?
+
+${formUrl}
+
+Your responses will be completely anonymous, so please feel free to be candid. Your insights will help me understand how I'm doing and where I can improve.
+
+Thank you for your time and support!
+
+Best regards`;
+      
+      const emailUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       window.location.href = emailUrl;
       toast.success('Opening email with your form link');
     } catch (error) {
@@ -155,11 +180,11 @@ export const FeedbackFormContainer = () => {
               <h2 className="text-xl font-bold text-gray-800 mb-6">Your Feedback Form</h2>
               
               <div className="relative w-full overflow-hidden rounded-xl mb-6" style={{ height: '400px' }}>
-                {!iframeLoaded && (
+                {!iframeLoaded ? (
                   <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-xl">
                     <LoadingSpinner size="lg" />
                   </div>
-                )}
+                ) : null}
                 <iframe 
                   src={formUrl}
                   width="100%" 
@@ -169,10 +194,31 @@ export const FeedbackFormContainer = () => {
                   marginWidth="0"
                   className="rounded-xl"
                   onLoad={() => setIframeLoaded(true)}
+                  style={{ minHeight: '90vh' }}
                 >
                   Loading…
                 </iframe>
               </div>
+              
+              {/* Edit Form Button (only for creator) */}
+              {userId && userId !== 'anonymous' && (
+                <div className="mb-6">
+                  <motion.a
+                    href={editFormUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl text-white font-bold flex items-center justify-center shadow-lg"
+                    whileHover={{ scale: 1.02, boxShadow: "0px 8px 20px rgba(139,92,246,0.4)" }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-3">
+                      <path d="M11 4H4C3.46957 4 2.96086 4.21071 2.58579 4.58579C2.21071 4.96086 2 5.46957 2 6V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M18.5 2.5C18.8978 2.10217 19.4374 1.87868 20 1.87868C20.5626 1.87868 21.1022 2.10217 21.5 2.5C21.8978 2.89782 22.1213 3.43739 22.1213 4C22.1213 4.56261 21.8978 5.10217 21.5 5.5L12 15L8 16L9 12L18.5 2.5Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                    Edit Form (Creator Only)
+                  </motion.a>
+                )}
+              )}
 
               <div className="bg-blue-50 rounded-2xl p-4 mb-6">
                 <div className="flex items-start">
@@ -270,6 +316,25 @@ export const FeedbackFormContainer = () => {
               Share via Email
             </motion.button>
           </div>
+          
+          {/* Error handling message */}
+          {!formUrl && !loading && (
+            <div className="mt-6 p-4 bg-red-50 rounded-2xl">
+              <div className="flex items-start">
+                <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 8V12M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-red-800 mb-1">Form Loading Error</h3>
+                  <p className="text-sm text-red-700 leading-relaxed">
+                    We couldn't load the feedback form. Please try refreshing the page or contact support if the issue persists.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>

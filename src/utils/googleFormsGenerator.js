@@ -1,6 +1,18 @@
 // Google Forms Generator Utility
 // This utility helps create and manage Google Forms programmatically
 
+// Direct public form URLs for each emotion path
+const publicFormUrls = {
+  'personal-growth': 'https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform',
+  'emotional-intelligence': 'https://docs.google.com/forms/d/e/1FAIpQLSdZnxVbWcbK_tIVr3dNoaLGHdY_DhOQZLmMnK0rjSjYBP-Yjw/viewform',
+  'relationship': 'https://docs.google.com/forms/d/e/1FAIpQLSfQeKKRnmCTcwM9V52OSVXfH-Vt_mL_i0Z_MjzKlKEkm0tZKQ/viewform',
+  'mental-health': 'https://docs.google.com/forms/d/e/1FAIpQLSdkZVxdUeXE1_1YOhQUFUHFCQGW_0xQfTAZoqQHBGTEPJcgww/viewform',
+  'communication': 'https://docs.google.com/forms/d/e/1FAIpQLSfLCGm4wKLXKCGPBOvJCkHWnKpGQvuGZVK-wHGIPJXI4E4IWg/viewform',
+  'values': 'https://docs.google.com/forms/d/e/1FAIpQLSdQXTCDfQ-Ki8E6xSi_mxRYHEUxJ1QzXzkEJx6ueBmwUZwPwA/viewform',
+  'conflicts-resolution': 'https://docs.google.com/forms/d/e/1FAIpQLSfXXtLkMNRrxwJYwJZ7KXdsXXLEZJJHYLGnR9EHE0DYEfGUVQ/viewform',
+  'romantic': 'https://docs.google.com/forms/d/e/1FAIpQLSdYpwj9KPkZSJj5cCYtV5XgbLLnN0CL_vWl9TNTxQQSGBLOlQ/viewform'
+};
+
 // Pre-defined questions for each emotional path
 const emotionQuestions = {
   'personal-growth': [
@@ -107,9 +119,22 @@ export const getQuestions = (emotion) => {
   return emotionQuestions[emotionKey];
 };
 
+// Function to get the public form URL for a specific emotion
+export const getPublicFormUrl = (emotion) => {
+  // Normalize emotion path
+  const normalizedEmotion = emotion.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+  
+  // Find the closest matching emotion
+  const emotionKey = Object.keys(publicFormUrls).find(key => 
+    normalizedEmotion === key || normalizedEmotion.includes(key) || key.includes(normalizedEmotion)
+  ) || 'personal-growth'; // Default to personal growth if no match
+  
+  return publicFormUrls[emotionKey];
+};
+
 // Function to generate a shareable link with custom parameters
 export const generateShareableLink = (emotion, userId) => {
-  const baseUrl = getFormUrl(emotion);
+  const baseUrl = getPublicFormUrl(emotion);
   const timestamp = Date.now();
   const uniqueId = `${userId || 'anonymous'}-${timestamp}`;
   

@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
 import { BackButton } from "../../components/UI/BackButton";
-import { FooterNavBar } from "../../components/FooterNavBar";
+import { FooterNavBar } from "../../components/FooterNavBar/FooterNavBar";
 import { db } from "../../utils/database";
+import { toast } from "../../components/UI/Toast";
 
 export const Messages = () => {
   const navigate = useNavigate();
@@ -15,14 +16,54 @@ export const Messages = () => {
   useEffect(() => {
     const loadMessages = async () => {
       try {
-        const responses = await db.api.feedbackResponses.getAll();
-        const forms = await db.api.feedbackForms.getAll();
+        setLoading(true);
+        
+        // Simulate loading responses from Google Forms
+        // In a real app, this would fetch from Supabase
+        const mockResponses = [
+          {
+            id: 'resp1',
+            form_id: 'form1',
+            submitted_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+            answers: [
+              { question: "What's one habit I've improved in the last 3 months?", answer: "You've become much more consistent with your exercise routine and it shows in your energy levels." },
+              { question: "Where do you see growth in me recently?", answer: "I've noticed you're much better at listening without immediately trying to solve problems. You seem more present in conversations." },
+              { question: "What should I focus on next to continue growing?", answer: "Maybe work on being more comfortable with uncertainty. You sometimes get anxious when things aren't clearly defined." },
+              { question: "How do I handle challenges or discomfort now vs. before?", answer: "You're definitely more resilient now. You don't get as frustrated when things don't go as planned." }
+            ]
+          },
+          {
+            id: 'resp2',
+            form_id: 'form2',
+            submitted_at: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+            answers: [
+              { question: "How well do I recognize and manage my own emotions?", answer: "You're getting better at recognizing when you're stressed, but you could still work on managing your reactions in the moment." },
+              { question: "How effectively do I respond to others' emotions?", answer: "You're very empathetic and good at making people feel understood." },
+              { question: "Do I show empathy and understanding in difficult situations?", answer: "Yes, especially when you take time to listen before responding." },
+              { question: "How well do I handle conflicts or disagreements?", answer: "This is an area for growth. You sometimes avoid necessary conflicts or get defensive." }
+            ]
+          }
+        ];
+        
+        // Mock forms data
+        const mockForms = [
+          {
+            id: 'form1',
+            emotion: 'personal-growth',
+            created_at: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
+          },
+          {
+            id: 'form2',
+            emotion: 'emotional-intelligence',
+            created_at: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString()
+          }
+        ];
         
         // Group responses by form and create messages
         const messageMap = new Map();
         
-        responses.forEach(response => {
-          const form = forms.find(f => f.id === response.form_id);
+        mockResponses.forEach(response => {
+          const form = mockForms.find(f => f.id === response.form_id);
           if (!form) return;
           
           const messageId = `form-${form.id}`;
@@ -51,6 +92,7 @@ export const Messages = () => {
         setMessages(messagesArray);
       } catch (error) {
         console.error('Error loading messages:', error);
+        toast.error('Failed to load messages');
         setMessages([]);
       } finally {
         setLoading(false);
