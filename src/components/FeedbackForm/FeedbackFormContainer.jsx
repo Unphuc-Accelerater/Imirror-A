@@ -217,7 +217,7 @@ Best regards`;
                     </svg>
                     Edit Form (Creator Only)
                   </motion.a>
-                )}
+                </div>
               )}
 
               <div className="bg-blue-50 rounded-2xl p-4 mb-6">
