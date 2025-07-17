@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { AuthProvider } from "./hooks/useAuth";
+import { AuthProvider } from "./hooks/useAuth.jsx";
 import { ToastContainer } from "./components/UI/Toast";
 
 // Import screens
