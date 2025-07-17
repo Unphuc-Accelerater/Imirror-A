@@ -1,49 +1,92 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { db } from "../../utils/database";
 import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
 import { FooterNavBar } from "../../components/FooterNavBar";
 
 export const Messages = () => {
   const navigate = useNavigate();
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([
+    {
+      id: "msg1",
+      title: "New Feedback Received",
+      message: "Someone responded to your Personal Growth form",
+      createdAt: new Date().toISOString(),
+      read: false,
+      form: {
+        title: "Personal Growth Feedback",
+        id: "form1"
+      },
+      responses: [
+        {
+          id: "resp1",
+          responses: [
+            {
+              question: "What's one habit I've improved in the last 3 months?",
+              answer: "You've become much more consistent with your exercise routine. I've noticed you're making time for it even when your schedule is busy."
+            },
+            {
+              question: "Where do you see growth in me recently?",
+              answer: "Your communication skills have improved significantly. You're more open about your feelings and better at listening without immediately responding."
+            },
+            {
+              question: "What should I focus on next to continue growing?",
+              answer: "I think you could work on being more patient with yourself. You've made great progress but sometimes you're too hard on yourself when things don't change as quickly as you'd like."
+            },
+            {
+              question: "How do I handle challenges or discomfort now vs. before?",
+              answer: "You're much better at staying calm when facing challenges. Before you would get visibly stressed, but now you take a moment to breathe and approach problems more methodically."
+            }
+          ],
+          submittedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
+        }
+      ]
+    },
+    {
+      id: "msg2",
+      title: "New Google Form Response",
+      message: "Someone responded to your Personal Growth Google Form",
+      createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+      read: true,
+      form: {
+        title: "Personal Growth Google Form",
+        id: "form2"
+      },
+      responses: [
+        {
+          id: "resp2",
+          responses: [
+            {
+              question: "What's one habit I've improved in the last 3 months?",
+              answer: "Your time management has improved a lot. You're much better at prioritizing important tasks and saying no to things that don't align with your goals."
+            },
+            {
+              question: "Where do you see growth in me recently?",
+              answer: "I've noticed you're more confident in social situations. You seem more comfortable expressing your opinions even when they differ from others."
+            },
+            {
+              question: "What should I focus on next to continue growing?",
+              answer: "Maybe work on maintaining a better work-life balance. You've made great strides in productivity, but sometimes at the expense of personal time."
+            },
+            {
+              question: "How do I handle challenges or discomfort now vs. before?",
+              answer: "You're more proactive about addressing issues instead of avoiding them. You face uncomfortable situations head-on rather than procrastinating."
+            }
+          ],
+          submittedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
+        }
+      ]
+    }
+  ]);
   const [loading, setLoading] = useState(true);
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
-    loadMessages();
-  }, []);
-
-  const loadMessages = async () => {
-    try {
-      // Get all feedback responses for the current user
-      const notifications = await db.api.notifications.getAll();
-      const feedbackMessages = notifications.filter(n => n.type === 'feedback_received');
-      
-      // Get detailed responses for each feedback
-      const messagesWithDetails = await Promise.all(
-        feedbackMessages.map(async (msg) => {
-          if (msg.formId) {
-            const form = await db.api.feedbackForms.getById(msg.formId);
-            const responses = await db.api.feedbackForms.getResponses(msg.formId);
-            return {
-              ...msg,
-              form: form.data,
-              responses: responses.data
-            };
-          }
-          return msg;
-        })
-      );
-
-      setMessages(messagesWithDetails);
-    } catch (error) {
-      console.error('Error loading messages:', error);
-    } finally {
+    // Simulate loading
+    setTimeout(() => {
       setLoading(false);
-    }
-  };
+    }, 1000);
+  }, []);
 
   const handleGoBack = () => {
     navigate(-1);
@@ -51,8 +94,12 @@ export const Messages = () => {
 
   const handleMessageClick = (message) => {
     setSelectedMessage(message);
-    // Mark as read
-    db.api.notifications.markAsRead(message.id);
+    // Mark as read (in a real app, this would update the database)
+    setMessages(prevMessages => 
+      prevMessages.map(msg => 
+        msg.id === message.id ? {...msg, read: true} : msg
+      )
+    );
   };
 
   const formatDate = (dateString) => {
@@ -178,7 +225,7 @@ export const Messages = () => {
                 <div className="flex items-start">
                   <div className="w-12 h-12 bg-gradient-to-r from-[#74a4ee] to-[#9783d3] rounded-full flex items-center justify-center mr-4">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
+                      <path d="M21 11.5C21.0034 12.8199 20.6951 14.1219 20.1 15.3C19.3944 16.7118 18.3098 17.8992 16.9674 18.7293C15.6251 19.5594 14.0782 19.9994 12.5 20C11.1801 20.0035 9.87812 19.6951 8.7 19.1L3 21L4.9 15.3C4.30493 14.1219 3.99656 12.8199 4 11.5C4.00061 9.92179 4.44061 8.37488 5.27072 7.03258C6.10083 5.69028 7.28825 4.6056 8.7 3.90003C9.87812 3.30496 11.1801 2.99659 12.5 3.00003H13C15.0843 3.11502 17.053 3.99479 18.5291 5.47089C20.0052 6.94699 20.885 8.91568 21 11V11.5Z" fill="white"/>
                     </svg>
                   </div>
                   <div className="flex-1">
