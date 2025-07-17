@@ -192,6 +192,11 @@ export const Messages = () => {
       <div className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] pt-12 pb-6">
         <div className="flex items-center justify-between px-6">
           <BackButton onClick={handleGoBack} style="dark" />
+          <h1 className="text-white text-xl font-bold">Messages</h1>
+          <div className="w-12" />
+        </div>
+      </div>
+
       {/* Messages List */}
       <div className="px-6 -mt-3 pb-24">
         {messages.length > 0 ? (
