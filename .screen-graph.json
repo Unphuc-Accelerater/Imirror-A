@@ -1,1 +1,1265 @@
-{"nodes":[{"id":"src/screens/SplashScreen/SplashScreen.jsx","label":"SplashScreen","routes":["/","/splash-screen"],"dataModelId":"682:535","isRoot":true},{"id":"src/screens/Journals/Journals.jsx","label":"Journals","routes":["/journals"],"dataModelId":"718:280"},{"id":"src/screens/SetupProfile/SetupProfile.jsx","label":"SetupProfile","routes":["/setupprofile"],"dataModelId":"718:360"},{"id":"src/screens/Dashboard/Dashboard.jsx","label":"Dashboard","routes":["/dashboard"],"dataModelId":"681:926"},{"id":"src/screens/Getstarted/Getstarted.jsx","label":"Getstarted","routes":["/getstarted3"],"dataModelId":"681:908"},{"id":"src/screens/GetstartedScreen/GetstartedScreen.jsx","label":"GetstartedScreen","routes":["/getstarted1"],"dataModelId":"681:880"},{"id":"src/screens/LoginSignup/LoginSignup.jsx","label":"LoginSignup","routes":["/loginu38signup"],"dataModelId":"680:1706"},{"id":"src/screens/DivWrapper/DivWrapper.jsx","label":"DivWrapper","routes":["/getstarted2"],"dataModelId":"681:897"},{"id":"src/screens/RequestFeedback/RequestFeedback.jsx","label":"RequestFeedback","routes":["/request-feedback"],"dataModelId":"713:3826"},{"id":"src/screens/Enterotp/Enterotp.jsx","label":"Enterotp","routes":["/enterotp"],"dataModelId":"656:622"},{"id":"src/routes/SelfAssessement/screens/SelfAssessement.jsx","label":"SelfAssessement","routes":["/self-assessment"]},{"id":"src/routes/Settings/screens/Settings.jsx","label":"Settings","routes":["/settings"]},{"id":"src/routes/MembershipPage/screens/MembershipPage.jsx","label":"MembershipPage","routes":["/membership"]},{"id":"src/routes/EditProfile/screens/EditProfile.jsx","label":"EditProfile","routes":["/edit-profile"]},{"id":"src/routes/ReferAFriend/screens/ReferAFriend.jsx","label":"ReferAFriend","routes":["/refer-a-friend"]},{"id":"src/routes/Notification/screens/Notification.jsx","label":"Notification","routes":["/notifications"]},{"id":"src/routes/Coaches/screens/Coaches.jsx","label":"Coaches","routes":["/coaches"]},{"id":"src/routes/Coaches/screens/DoctorProfile.jsx","label":"DoctorProfile","routes":["/coaches/sarah-chen"]},{"id":"src/routes/Coaches/screens/DoctorSessionBooking.jsx","label":"DoctorSessionBooking","routes":["/coaches/sarah-chen/book-session"]},{"id":"src/routes/Payment/screens/PaymentSelection.jsx","label":"PaymentSelection","routes":["/payment"]},{"id":"src/routes/Payment/screens/PaymentSuccess.jsx","label":"PaymentSuccess","routes":["/payment-success"]},{"id":"src/routes/Review/index.js","label":"ThankYouConfirmation","routes":["/thank-you-review"]},{"id":"src/routes/HelpFAQ/screens/HelpFAQ.jsx","label":"HelpFAQ","routes":["/help-faq"]},{"id":"src/routes/FeedbackForms/screens/PersonalGrowthForm.jsx","label":"PersonalGrowthForm","routes":["/feedback/personal-growth"]},{"id":"src/routes/FeedbackForms/screens/EmotionalIntelligenceForm.jsx","label":"EmotionalIntelligenceForm","routes":["/feedback/emotional-intelligence"]},{"id":"src/routes/FeedbackForms/screens/RelationshipForm.jsx","label":"RelationshipForm","routes":["/feedback/relationship"]},{"id":"src/routes/FeedbackForms/screens/MentalHealthForm.jsx","label":"MentalHealthForm","routes":["/feedback/mental-health"]},{"id":"src/routes/FeedbackForms/screens/CommunicationForm.jsx","label":"CommunicationForm","routes":["/feedback/communication"]},{"id":"src/routes/FeedbackForms/screens/ValuesForm.jsx","label":"ValuesForm","routes":["/feedback/values"]},{"id":"src/routes/FeedbackForms/screens/ConflictResolutionForm.jsx","label":"ConflictResolutionForm","routes":["/feedback/conflict-resolution"]},{"id":"src/routes/FeedbackForms/screens/RomanticForm.jsx","label":"RomanticForm","routes":["/feedback/romantic"]}],"edges":[{"id":"src/screens/Dashboard/Dashboard.jsx:110:0-to-src/screens/RequestFeedback/RequestFeedback.jsx","source":"src/screens/Dashboard/Dashboard.jsx","target":"src/screens/RequestFeedback/RequestFeedback.jsx","data":{"viaRoute":"/request-feedback","trigger":{"element":"<Link to=\"/request-feedback\" className=\"block w-[48%]\">","line":110,"endLine":111,"column":0,"endColumn":0,"sourceFile":"src/screens/Dashboard/Dashboard.jsx"}}},{"id":"src/screens/Dashboard/Dashboard.jsx:129:0-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx","source":"src/screens/Dashboard/Dashboard.jsx","target":"src/routes/SelfAssessement/screens/SelfAssessement.jsx","data":{"viaRoute":"/self-assessment","trigger":{"element":"<Link to=\"/self-assessment\" className=\"block w-[48%]\">","line":129,"endLine":130,"column":0,"endColumn":0,"sourceFile":"src/screens/Dashboard/Dashboard.jsx"}}},{"id":"src/screens/Dashboard/Dashboard.jsx:151:0-to-src/screens/Journals/Journals.jsx","source":"src/screens/Dashboard/Dashboard.jsx","target":"src/screens/Journals/Journals.jsx","data":{"viaRoute":"/journals","trigger":{"element":"<Link to=\"/journals\" className=\"block w-[48%]\">","line":151,"endLine":152,"column":0,"endColumn":0,"sourceFile":"src/screens/Dashboard/Dashboard.jsx"}}},{"id":"src/screens/Dashboard/Dashboard.jsx:170:0-to-src/routes/Coaches/screens/Coaches.jsx","source":"src/screens/Dashboard/Dashboard.jsx","target":"src/routes/Coaches/screens/Coaches.jsx","data":{"viaRoute":"/coaches","trigger":{"element":"<Link to=\"/coaches\" className=\"block w-[48%]\">","line":170,"endLine":171,"column":0,"endColumn":0,"sourceFile":"src/screens/Dashboard/Dashboard.jsx"}}},{"id":"src/screens/Dashboard/Dashboard.jsx:254:0-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx","source":"src/screens/Dashboard/Dashboard.jsx","target":"src/routes/SelfAssessement/screens/SelfAssessement.jsx","data":{"viaRoute":"/self-assessment","trigger":{"element":"<Link to=\"/self-assessment\" className=\"ml-4 text-sm text-[#74a4ee] font-medium\">","line":254,"endLine":255,"column":0,"endColumn":0,"sourceFile":"src/screens/Dashboard/Dashboard.jsx"}}},{"id":"src/screens/DivWrapper/DivWrapper.jsx:12:0-to-src/screens/Getstarted/Getstarted.jsx","source":"src/screens/DivWrapper/DivWrapper.jsx","target":"src/screens/Getstarted/Getstarted.jsx","data":{"viaRoute":"/getstarted3","trigger":{"element":"<Link\n        className=\"bg-new-fill-ffffff overflow-hidden w-[381px] h-[801px] block\"\n        to=\"/getstarted3\"\n      >","line":12,"endLine":13,"column":0,"endColumn":0,"sourceFile":"src/screens/DivWrapper/DivWrapper.jsx"}}}]}
+{
+  "nodes": [
+    {
+      "id": "src/screens/SplashScreen/SplashScreen.jsx",
+      "label": "SplashScreen",
+      "routes": [
+        "/",
+        "/splash-screen"
+      ],
+      "isRoot": true
+    },
+    {
+      "id": "src/screens/Journals/Journals.jsx",
+      "label": "Journals",
+      "routes": [
+        "/journals"
+      ],
+      "dataModelId": "718:280"
+    },
+    {
+      "id": "src/screens/SetupProfile/SetupProfile.jsx",
+      "label": "SetupProfile",
+      "routes": [
+        "/setupprofile"
+      ],
+      "dataModelId": "718:360"
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx",
+      "label": "Dashboard",
+      "routes": [
+        "/dashboard"
+      ],
+      "dataModelId": "681:926"
+    },
+    {
+      "id": "src/screens/Getstarted/Getstarted.jsx",
+      "label": "Getstarted",
+      "routes": [
+        "/getstarted3"
+      ],
+      "dataModelId": "681:908"
+    },
+    {
+      "id": "src/screens/GetstartedScreen/GetstartedScreen.jsx",
+      "label": "GetstartedScreen",
+      "routes": [
+        "/getstarted1"
+      ],
+      "dataModelId": "681:880"
+    },
+    {
+      "id": "src/screens/LoginSignup/LoginSignup.jsx",
+      "label": "LoginSignup",
+      "routes": [
+        "/loginu38signup"
+      ],
+      "dataModelId": "680:1706"
+    },
+    {
+      "id": "src/screens/DivWrapper/DivWrapper.jsx",
+      "label": "DivWrapper",
+      "routes": [
+        "/getstarted2"
+      ],
+      "dataModelId": "681:897"
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "label": "RequestFeedback",
+      "routes": [
+        "/request-feedback"
+      ],
+      "dataModelId": "713:3826"
+    },
+    {
+      "id": "src/screens/Enterotp/Enterotp.jsx",
+      "label": "Enterotp",
+      "routes": [
+        "/enterotp"
+      ],
+      "dataModelId": "656:622"
+    },
+    {
+      "id": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "label": "SelfAssessement",
+      "routes": [
+        "/self-assessment"
+      ]
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx",
+      "label": "Settings",
+      "routes": [
+        "/settings"
+      ]
+    },
+    {
+      "id": "src/routes/MembershipPage/screens/MembershipPage.jsx",
+      "label": "MembershipPage",
+      "routes": [
+        "/membership"
+      ]
+    },
+    {
+      "id": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "label": "EditProfile",
+      "routes": [
+        "/edit-profile"
+      ]
+    },
+    {
+      "id": "src/routes/ReferAFriend/screens/ReferAFriend.jsx",
+      "label": "ReferAFriend",
+      "routes": [
+        "/refer-a-friend"
+      ]
+    },
+    {
+      "id": "src/routes/Notification/screens/Notification.jsx",
+      "label": "Notification",
+      "routes": [
+        "/notifications"
+      ]
+    },
+    {
+      "id": "src/routes/Coaches/screens/Coaches.jsx",
+      "label": "Coaches",
+      "routes": [
+        "/coaches"
+      ]
+    },
+    {
+      "id": "src/routes/Coaches/screens/DoctorProfile.jsx",
+      "label": "DoctorProfile",
+      "routes": [
+        "/coaches/sarah-chen"
+      ]
+    },
+    {
+      "id": "src/routes/Coaches/screens/DoctorSessionBooking.jsx",
+      "label": "DoctorSessionBooking",
+      "routes": [
+        "/coaches/sarah-chen/book-session"
+      ]
+    },
+    {
+      "id": "src/routes/Payment/screens/PaymentSelection.jsx",
+      "label": "PaymentSelection",
+      "routes": [
+        "/payment"
+      ]
+    },
+    {
+      "id": "src/routes/Payment/screens/PaymentSuccess.jsx",
+      "label": "PaymentSuccess",
+      "routes": [
+        "/payment-success"
+      ]
+    },
+    {
+      "id": "src/routes/Review/screens/WriteReview.jsx",
+      "label": "WriteReview",
+      "routes": [
+        "/write-review"
+      ]
+    },
+    {
+      "id": "src/routes/Review/screens/ThankYouConfirmation.jsx",
+      "label": "ThankYouConfirmation",
+      "routes": [
+        "/thank-you-review"
+      ]
+    },
+    {
+      "id": "src/routes/HelpFAQ/screens/HelpFAQ.jsx",
+      "label": "HelpFAQ",
+      "routes": [
+        "/help-faq"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/PersonalGrowthForm.jsx",
+      "label": "PersonalGrowthForm",
+      "routes": [
+        "/feedback/personal-growth"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/EmotionalIntelligenceForm.jsx",
+      "label": "EmotionalIntelligenceForm",
+      "routes": [
+        "/feedback/emotional-intelligence"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/RelationshipForm.jsx",
+      "label": "RelationshipForm",
+      "routes": [
+        "/feedback/relationship"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/MentalHealthForm.jsx",
+      "label": "MentalHealthForm",
+      "routes": [
+        "/feedback/mental-health"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/CommunicationForm.jsx",
+      "label": "CommunicationForm",
+      "routes": [
+        "/feedback/communication"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/ValuesForm.jsx",
+      "label": "ValuesForm",
+      "routes": [
+        "/feedback/values"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/ConflictResolutionForm.jsx",
+      "label": "ConflictResolutionForm",
+      "routes": [
+        "/feedback/conflict-resolution"
+      ]
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/RomanticForm.jsx",
+      "label": "RomanticForm",
+      "routes": [
+        "/feedback/romantic"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "src/screens/SplashScreen/SplashScreen.jsx:11:6-to-src/screens/GetstartedScreen/GetstartedScreen.jsx",
+      "source": "src/screens/SplashScreen/SplashScreen.jsx",
+      "target": "src/screens/GetstartedScreen/GetstartedScreen.jsx",
+      "data": {
+        "viaRoute": "/getstarted1",
+        "trigger": {
+          "element": "navigate('/getstarted1')",
+          "line": 11,
+          "endLine": 11,
+          "column": 6,
+          "endColumn": 30,
+          "sourceFile": "src/screens/SplashScreen/SplashScreen.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 25,
+          "endLine": 25,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 51,
+          "endLine": 51,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "data": {
+        "viaRoute": "/request-feedback",
+        "trigger": {
+          "element": "navigate(\"/request-feedback\")",
+          "line": 72,
+          "endLine": 72,
+          "column": 27,
+          "endColumn": 56,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/Notification/screens/Notification.jsx",
+      "data": {
+        "viaRoute": "/notifications",
+        "trigger": {
+          "element": "navigate(\"/notifications\")",
+          "line": 102,
+          "endLine": 102,
+          "column": 23,
+          "endColumn": 49,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "data": {
+        "viaRoute": "/edit-profile",
+        "trigger": {
+          "element": "navigate(\"/edit-profile\")",
+          "line": 128,
+          "endLine": 128,
+          "column": 23,
+          "endColumn": 48,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/SetupProfile/SetupProfile.jsx:31:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/SetupProfile/SetupProfile.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 31,
+          "endLine": 31,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/screens/SetupProfile/SetupProfile.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/SetupProfile/SetupProfile.jsx:35:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/SetupProfile/SetupProfile.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 35,
+          "endLine": 35,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/screens/SetupProfile/SetupProfile.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:65:31-to-src/screens/SetupProfile/SetupProfile.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/screens/SetupProfile/SetupProfile.jsx",
+      "data": {
+        "viaRoute": "/setupprofile",
+        "trigger": {
+          "element": "navigate(\"/setupprofile\")",
+          "line": 65,
+          "endLine": 65,
+          "column": 31,
+          "endColumn": 56,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:73:31-to-src/screens/SetupProfile/SetupProfile.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/screens/SetupProfile/SetupProfile.jsx",
+      "data": {
+        "viaRoute": "/setupprofile",
+        "trigger": {
+          "element": "navigate(\"/setupprofile\")",
+          "line": 73,
+          "endLine": 73,
+          "column": 31,
+          "endColumn": 56,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:81:29-to-src/routes/Settings/screens/Settings.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/routes/Settings/screens/Settings.jsx",
+      "data": {
+        "viaRoute": "/settings",
+        "trigger": {
+          "element": "navigate(\"/settings\")",
+          "line": 81,
+          "endLine": 81,
+          "column": 29,
+          "endColumn": 50,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:110:10-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "data": {
+        "viaRoute": "/request-feedback",
+        "trigger": {
+          "element": "<Link to=\"/request-feedback\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.4 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-26@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Request Feedback</h3>\n              <span className=\"text-xs text-gray-500\">1/5 completed</span>\n            </motion.div>\n          </Link>",
+          "line": 110,
+          "endLine": 127,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:129:10-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "data": {
+        "viaRoute": "/self-assessment",
+        "trigger": {
+          "element": "<Link to=\"/self-assessment\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.5 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-28@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Self Assessment</h3>\n              <span className=\"text-xs text-gray-500\">Try it now</span>\n            </motion.div>\n          </Link>",
+          "line": 129,
+          "endLine": 146,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:151:10-to-src/screens/Journals/Journals.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/screens/Journals/Journals.jsx",
+      "data": {
+        "viaRoute": "/journals",
+        "trigger": {
+          "element": "<Link to=\"/journals\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.6 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3\"\n                alt=\"Open book\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/open-book@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Journal Stories</h3>\n              <span className=\"text-xs text-gray-500\">Write today</span>\n            </motion.div>\n          </Link>",
+          "line": 151,
+          "endLine": 168,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:170:10-to-src/routes/Coaches/screens/Coaches.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/routes/Coaches/screens/Coaches.jsx",
+      "data": {
+        "viaRoute": "/coaches",
+        "trigger": {
+          "element": "<Link to=\"/coaches\" className=\"block w-[48%]\">\n            <motion.div \n              className=\"w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative\"\n              whileHover={{ y: -5, boxShadow: \"0px 10px 25px rgba(116,164,238,0.2)\" }}\n              initial={{ opacity: 0, y: 20 }}\n              animate={{ opacity: 1, y: 0 }}\n              transition={{ delay: 0.7 }}\n            >\n              <div className=\"absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]\"></div>\n              <img\n                className=\"w-[50px] h-[50px] mb-3 object-cover\"\n                alt=\"Image\"\n                src=\"https://c.animaapp.com/hUOULd8k/img/image-27@2x.png\"\n              />\n              <h3 className=\"font-bold text-[#333] text-center text-lg mb-1\">Coaches</h3>\n              <span className=\"text-xs text-gray-500\">Find support</span>\n            </motion.div>\n          </Link>",
+          "line": 170,
+          "endLine": 187,
+          "column": 10,
+          "endColumn": 17,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Dashboard/Dashboard.jsx:254:14-to-src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "source": "src/screens/Dashboard/Dashboard.jsx",
+      "target": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "data": {
+        "viaRoute": "/self-assessment",
+        "trigger": {
+          "element": "<Link to=\"/self-assessment\" className=\"ml-4 text-sm text-[#74a4ee] font-medium\">View Details</Link>",
+          "line": 254,
+          "endLine": 254,
+          "column": 14,
+          "endColumn": 113,
+          "sourceFile": "src/screens/Dashboard/Dashboard.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 25,
+          "endLine": 25,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 51,
+          "endLine": 51,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "data": {
+        "viaRoute": "/request-feedback",
+        "trigger": {
+          "element": "navigate(\"/request-feedback\")",
+          "line": 72,
+          "endLine": 72,
+          "column": 27,
+          "endColumn": 56,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/Notification/screens/Notification.jsx",
+      "data": {
+        "viaRoute": "/notifications",
+        "trigger": {
+          "element": "navigate(\"/notifications\")",
+          "line": 102,
+          "endLine": 102,
+          "column": 23,
+          "endColumn": 49,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "data": {
+        "viaRoute": "/edit-profile",
+        "trigger": {
+          "element": "navigate(\"/edit-profile\")",
+          "line": 128,
+          "endLine": 128,
+          "column": 23,
+          "endColumn": 48,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Getstarted/Getstarted.jsx:15:14-to-src/screens/LoginSignup/LoginSignup.jsx",
+      "source": "src/screens/Getstarted/Getstarted.jsx",
+      "target": "src/screens/LoginSignup/LoginSignup.jsx",
+      "data": {
+        "viaRoute": "/loginu38signup",
+        "trigger": {
+          "element": "<Button\n                divClassName=\"!mt-[unset]\"\n                label=\"Get Started\"\n                size=\"medium\"\n                stateProp=\"default\"\n                to=\"/loginu38signup\"\n                variant=\"primary\"\n                variantPrimaryClassName=\"!border-[#74a4ee] !h-[49px] !rounded-[25px] !shadow-[0px_7px_16px_#0000001a,0px_30px_30px_#00000017,0px_67px_40px_#0000000d,0px_120px_48px_#00000003,0px_187px_52px_transparent] !flex !absolute !left-[71px] !bg-new-fill-74a4ee !w-[272px] !top-[550px]\"\n              />",
+          "line": 15,
+          "endLine": 23,
+          "column": 14,
+          "endColumn": 16,
+          "sourceFile": "src/screens/Getstarted/Getstarted.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/GetstartedScreen/GetstartedScreen.jsx:38:4-to-src/screens/LoginSignup/LoginSignup.jsx",
+      "source": "src/screens/GetstartedScreen/GetstartedScreen.jsx",
+      "target": "src/screens/LoginSignup/LoginSignup.jsx",
+      "data": {
+        "viaRoute": "/loginu38signup",
+        "trigger": {
+          "element": "navigate(\"/loginu38signup\")",
+          "line": 38,
+          "endLine": 38,
+          "column": 4,
+          "endColumn": 31,
+          "sourceFile": "src/screens/GetstartedScreen/GetstartedScreen.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/GetstartedScreen/GetstartedScreen.jsx:72:10-to-src/screens/LoginSignup/LoginSignup.jsx",
+      "source": "src/screens/GetstartedScreen/GetstartedScreen.jsx",
+      "target": "src/screens/LoginSignup/LoginSignup.jsx",
+      "data": {
+        "viaRoute": "/loginu38signup",
+        "trigger": {
+          "element": "<Button\n            divClassName=\"!mt-[unset]\"\n            label=\"Get Started\"\n            size=\"medium\"\n            stateProp=\"default\"\n            variant=\"primary\"\n            variantPrimaryClassName=\"!border-[#7fabef] !h-[49px] !rounded-[25px] !shadow-[0px_7px_16px_#0000001a] !flex !w-full !bg-new-fill-74a4ee\"\n            to=\"/loginu38signup\"\n          />",
+          "line": 72,
+          "endLine": 80,
+          "column": 10,
+          "endColumn": 12,
+          "sourceFile": "src/screens/GetstartedScreen/GetstartedScreen.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/LoginSignup/LoginSignup.jsx:42:6-to-src/screens/Enterotp/Enterotp.jsx",
+      "source": "src/screens/LoginSignup/LoginSignup.jsx",
+      "target": "src/screens/Enterotp/Enterotp.jsx",
+      "data": {
+        "viaRoute": "/enterotp",
+        "trigger": {
+          "element": "navigate(\"/enterotp\")",
+          "line": 42,
+          "endLine": 42,
+          "column": 6,
+          "endColumn": 27,
+          "sourceFile": "src/screens/LoginSignup/LoginSignup.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/DivWrapper/DivWrapper.jsx:12:6-to-src/screens/Getstarted/Getstarted.jsx",
+      "source": "src/screens/DivWrapper/DivWrapper.jsx",
+      "target": "src/screens/Getstarted/Getstarted.jsx",
+      "data": {
+        "viaRoute": "/getstarted3",
+        "trigger": {
+          "element": "<Link\n        className=\"bg-new-fill-ffffff overflow-hidden w-[381px] h-[801px] block\"\n        to=\"/getstarted3\"\n      >\n        <div className=\"relative w-[390px] h-[844px]\">\n          <div className=\"absolute w-[390px] h-[844px] top-0 left-0 border border-solid border-new-stroke-style bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)]\">\n            <Button\n              divClassName=\"!mt-[unset]\"\n              label=\"Get Started\"\n              size=\"medium\"\n              stateProp=\"default\"\n              variant=\"primary\"\n              variantPrimaryClassName=\"!border-[#cfd6f4] !h-[49px] !rounded-[25px] !shadow-[0px_7px_16px_#0000001a,0px_30px_30px_#00000017,0px_67px_40px_#0000000d,0px_120px_48px_#00000003,0px_187px_52px_transparent] !flex !absolute !left-[59px] !bg-new-fill-74a4ee !w-[272px] !top-[704px]\"\n            />\n            <div className=\"absolute w-[327px] h-[404px] top-[161px] left-8 bg-new-fill-ffffff rounded-[43px] shadow-drop-shadow-radius-24\">\n              <div className=\"absolute w-[246px] h-[124px] top-0 left-[45px]\">\n                <img\n                  className=\"absolute w-24 h-24 top-0 left-[66px] object-cover\"\n                  alt=\"Image\"\n                  src=\"https://c.animaapp.com/hUOULd8k/img/image-17@2x.png\"\n                />\n\n                <div className=\"absolute top-[95px] left-0 font-heading font-[number:var(--heading-font-weight)] text-black text-[length:var(--heading-font-size)] tracking-[var(--heading-letter-spacing)] leading-[var(--heading-line-height)] whitespace-nowrap [font-style:var(--heading-font-style)]\">\n                  Therapists &amp; Coaches\n                </div>\n              </div>\n\n              <p className=\"absolute w-[258px] top-[177px] left-[45px] font-body-base font-[number:var(--body-base-font-weight)] text-black text-[length:var(--body-base-font-size)] tracking-[var(--body-base-letter-spacing)] leading-[var(--body-base-line-height)] [font-style:var(--body-base-font-style)]\">\n                Connect with professional\n                <br />\n                therapists and certified coaches\n                <br />\n                who can guide your personal\n                <br />\n                development journey with expert insights.\n              </p>\n            </div>\n          </div>\n\n          <div className=\"absolute w-[365px] h-11 top-[568px] left-2.5\">\n            <div className=\"inline-flex items-center justify-center gap-2 px-3 py-2 relative top-2.5 left-[150px] rounded-[50px] backdrop-blur-[20px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(20px)_brightness(100%)]\">\n              <Materials\n                className=\"!h-6 !rounded-[100px] !absolute !left-0 !w-16 !top-0\"\n                style=\"ultrathin\"\n              />\n              <div className=\"opacity-30 relative w-2 h-2 bg-system-colors-labels-primary rounded-[50px]\" />\n\n              <div className=\"relative w-2 h-2 bg-system-colors-labels-primary rounded-[50px]\" />\n\n              <div className=\"opacity-30 relative w-2 h-2 bg-system-colors-labels-primary rounded-[50px]\" />\n            </div>\n          </div>\n        </div>\n      </Link>",
+          "line": 12,
+          "endLine": 65,
+          "column": 6,
+          "endColumn": 13,
+          "sourceFile": "src/screens/DivWrapper/DivWrapper.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:22:8-to-src/routes/FeedbackForms/screens/PersonalGrowthForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/PersonalGrowthForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/personal-growth",
+        "trigger": {
+          "element": "navigate(\"/feedback/personal-growth\")",
+          "line": 22,
+          "endLine": 22,
+          "column": 8,
+          "endColumn": 45,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:24:8-to-src/routes/FeedbackForms/screens/EmotionalIntelligenceForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/EmotionalIntelligenceForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/emotional-intelligence",
+        "trigger": {
+          "element": "navigate(\"/feedback/emotional-intelligence\")",
+          "line": 24,
+          "endLine": 24,
+          "column": 8,
+          "endColumn": 52,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:26:8-to-src/routes/FeedbackForms/screens/RelationshipForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/RelationshipForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/relationship",
+        "trigger": {
+          "element": "navigate(\"/feedback/relationship\")",
+          "line": 26,
+          "endLine": 26,
+          "column": 8,
+          "endColumn": 42,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:28:8-to-src/routes/FeedbackForms/screens/MentalHealthForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/MentalHealthForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/mental-health",
+        "trigger": {
+          "element": "navigate(\"/feedback/mental-health\")",
+          "line": 28,
+          "endLine": 28,
+          "column": 8,
+          "endColumn": 43,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:30:8-to-src/routes/FeedbackForms/screens/CommunicationForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/CommunicationForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/communication",
+        "trigger": {
+          "element": "navigate(\"/feedback/communication\")",
+          "line": 30,
+          "endLine": 30,
+          "column": 8,
+          "endColumn": 43,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:32:8-to-src/routes/FeedbackForms/screens/ValuesForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/ValuesForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/values",
+        "trigger": {
+          "element": "navigate(\"/feedback/values\")",
+          "line": 32,
+          "endLine": 32,
+          "column": 8,
+          "endColumn": 36,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:34:8-to-src/routes/FeedbackForms/screens/ConflictResolutionForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/ConflictResolutionForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/conflict-resolution",
+        "trigger": {
+          "element": "navigate(\"/feedback/conflict-resolution\")",
+          "line": 34,
+          "endLine": 34,
+          "column": 8,
+          "endColumn": 49,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:36:8-to-src/routes/FeedbackForms/screens/RomanticForm.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/routes/FeedbackForms/screens/RomanticForm.jsx",
+      "data": {
+        "viaRoute": "/feedback/romantic",
+        "trigger": {
+          "element": "navigate(\"/feedback/romantic\")",
+          "line": 36,
+          "endLine": 36,
+          "column": 8,
+          "endColumn": 38,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/RequestFeedback/RequestFeedback.jsx:39:8-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 39,
+          "endLine": 39,
+          "column": 8,
+          "endColumn": 30,
+          "sourceFile": "src/screens/RequestFeedback/RequestFeedback.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 25,
+          "endLine": 25,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 51,
+          "endLine": 51,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "data": {
+        "viaRoute": "/request-feedback",
+        "trigger": {
+          "element": "navigate(\"/request-feedback\")",
+          "line": 72,
+          "endLine": 72,
+          "column": 27,
+          "endColumn": 56,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/Notification/screens/Notification.jsx",
+      "data": {
+        "viaRoute": "/notifications",
+        "trigger": {
+          "element": "navigate(\"/notifications\")",
+          "line": 102,
+          "endLine": 102,
+          "column": 23,
+          "endColumn": 49,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "data": {
+        "viaRoute": "/edit-profile",
+        "trigger": {
+          "element": "navigate(\"/edit-profile\")",
+          "line": 128,
+          "endLine": 128,
+          "column": 23,
+          "endColumn": 48,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/screens/Enterotp/Enterotp.jsx:66:6-to-src/screens/SetupProfile/SetupProfile.jsx",
+      "source": "src/screens/Enterotp/Enterotp.jsx",
+      "target": "src/screens/SetupProfile/SetupProfile.jsx",
+      "data": {
+        "viaRoute": "/setupprofile",
+        "trigger": {
+          "element": "navigate(\"/setupprofile\")",
+          "line": 66,
+          "endLine": 66,
+          "column": 6,
+          "endColumn": 31,
+          "sourceFile": "src/screens/Enterotp/Enterotp.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/SelfAssessement/screens/SelfAssessement.jsx:197:31-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 197,
+          "endLine": 197,
+          "column": 31,
+          "endColumn": 53,
+          "sourceFile": "src/routes/SelfAssessement/screens/SelfAssessement.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:25:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 25,
+          "endLine": 25,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:51:23-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 51,
+          "endLine": 51,
+          "column": 23,
+          "endColumn": 45,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:72:27-to-src/screens/RequestFeedback/RequestFeedback.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/screens/RequestFeedback/RequestFeedback.jsx",
+      "data": {
+        "viaRoute": "/request-feedback",
+        "trigger": {
+          "element": "navigate(\"/request-feedback\")",
+          "line": 72,
+          "endLine": 72,
+          "column": 27,
+          "endColumn": 56,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:102:23-to-src/routes/Notification/screens/Notification.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/Notification/screens/Notification.jsx",
+      "data": {
+        "viaRoute": "/notifications",
+        "trigger": {
+          "element": "navigate(\"/notifications\")",
+          "line": 102,
+          "endLine": 102,
+          "column": 23,
+          "endColumn": 49,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:128:23-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "source": "src/screens/Journals/Journals.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "data": {
+        "viaRoute": "/edit-profile",
+        "trigger": {
+          "element": "navigate(\"/edit-profile\")",
+          "line": 128,
+          "endLine": 128,
+          "column": 23,
+          "endColumn": 48,
+          "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:21:4-to-src/screens/SplashScreen/SplashScreen.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/screens/SplashScreen/SplashScreen.jsx",
+      "data": {
+        "viaRoute": "/",
+        "trigger": {
+          "element": "navigate(\"/\")",
+          "line": 21,
+          "endLine": 21,
+          "column": 4,
+          "endColumn": 17,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:113:27-to-src/routes/MembershipPage/screens/MembershipPage.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/MembershipPage/screens/MembershipPage.jsx",
+      "data": {
+        "viaRoute": "/membership",
+        "trigger": {
+          "element": "navigate(\"/membership\")",
+          "line": 113,
+          "endLine": 113,
+          "column": 27,
+          "endColumn": 50,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:131:29-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "data": {
+        "viaRoute": "/edit-profile",
+        "trigger": {
+          "element": "navigate(\"/edit-profile\")",
+          "line": 131,
+          "endLine": 131,
+          "column": 29,
+          "endColumn": 54,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:136:29-to-src/routes/ReferAFriend/screens/ReferAFriend.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/ReferAFriend/screens/ReferAFriend.jsx",
+      "data": {
+        "viaRoute": "/refer-a-friend",
+        "trigger": {
+          "element": "navigate(\"/refer-a-friend\")",
+          "line": 136,
+          "endLine": 136,
+          "column": 29,
+          "endColumn": 56,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:141:29-to-src/routes/Notification/screens/Notification.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/Notification/screens/Notification.jsx",
+      "data": {
+        "viaRoute": "/notifications",
+        "trigger": {
+          "element": "navigate(\"/notifications\")",
+          "line": 141,
+          "endLine": 141,
+          "column": 29,
+          "endColumn": 55,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:153:29-to-src/routes/Review/screens/WriteReview.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/Review/screens/WriteReview.jsx",
+      "data": {
+        "viaRoute": "/write-review",
+        "trigger": {
+          "element": "navigate(\"/write-review\")",
+          "line": 153,
+          "endLine": 153,
+          "column": 29,
+          "endColumn": 54,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Settings/screens/Settings.jsx:158:29-to-src/routes/HelpFAQ/screens/HelpFAQ.jsx",
+      "source": "src/routes/Settings/screens/Settings.jsx",
+      "target": "src/routes/HelpFAQ/screens/HelpFAQ.jsx",
+      "data": {
+        "viaRoute": "/help-faq",
+        "trigger": {
+          "element": "navigate(\"/help-faq\")",
+          "line": 158,
+          "endLine": 158,
+          "column": 29,
+          "endColumn": 50,
+          "sourceFile": "src/routes/Settings/screens/Settings.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/MembershipPage/screens/MembershipPage.jsx:79:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/MembershipPage/screens/MembershipPage.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 79,
+          "endLine": 79,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/routes/MembershipPage/screens/MembershipPage.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/EditProfile/screens/EditProfile.jsx:59:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/EditProfile/screens/EditProfile.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 59,
+          "endLine": 59,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/routes/EditProfile/screens/EditProfile.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Coaches/screens/DoctorProfile.jsx:13:4-to-src/routes/Coaches/screens/DoctorSessionBooking.jsx",
+      "source": "src/routes/Coaches/screens/DoctorProfile.jsx",
+      "target": "src/routes/Coaches/screens/DoctorSessionBooking.jsx",
+      "data": {
+        "viaRoute": "/coaches/sarah-chen/book-session",
+        "trigger": {
+          "element": "navigate(\"/coaches/sarah-chen/book-session\")",
+          "line": 13,
+          "endLine": 13,
+          "column": 4,
+          "endColumn": 48,
+          "sourceFile": "src/routes/Coaches/screens/DoctorProfile.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Coaches/screens/DoctorSessionBooking.jsx:23:4-to-src/routes/Payment/screens/PaymentSelection.jsx",
+      "source": "src/routes/Coaches/screens/DoctorSessionBooking.jsx",
+      "target": "src/routes/Payment/screens/PaymentSelection.jsx",
+      "data": {
+        "viaRoute": "/payment",
+        "trigger": {
+          "element": "navigate(\"/payment\")",
+          "line": 23,
+          "endLine": 23,
+          "column": 4,
+          "endColumn": 24,
+          "sourceFile": "src/routes/Coaches/screens/DoctorSessionBooking.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Payment/screens/PaymentSelection.jsx:47:6-to-src/routes/Payment/screens/PaymentSuccess.jsx",
+      "source": "src/routes/Payment/screens/PaymentSelection.jsx",
+      "target": "src/routes/Payment/screens/PaymentSuccess.jsx",
+      "data": {
+        "viaRoute": "/payment-success",
+        "trigger": {
+          "element": "navigate(\"/payment-success\")",
+          "line": 47,
+          "endLine": 47,
+          "column": 6,
+          "endColumn": 34,
+          "sourceFile": "src/routes/Payment/screens/PaymentSelection.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Payment/screens/PaymentSuccess.jsx:14:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/Payment/screens/PaymentSuccess.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 14,
+          "endLine": 14,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/routes/Payment/screens/PaymentSuccess.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Review/screens/WriteReview.jsx:21:4-to-src/routes/Review/screens/ThankYouConfirmation.jsx",
+      "source": "src/routes/Review/screens/WriteReview.jsx",
+      "target": "src/routes/Review/screens/ThankYouConfirmation.jsx",
+      "data": {
+        "viaRoute": "/thank-you-review",
+        "trigger": {
+          "element": "navigate(\"/thank-you-review\")",
+          "line": 21,
+          "endLine": 21,
+          "column": 4,
+          "endColumn": 33,
+          "sourceFile": "src/routes/Review/screens/WriteReview.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Review/screens/ThankYouConfirmation.jsx:13:4-to-src/routes/Review/screens/WriteReview.jsx",
+      "source": "src/routes/Review/screens/ThankYouConfirmation.jsx",
+      "target": "src/routes/Review/screens/WriteReview.jsx",
+      "data": {
+        "viaRoute": "/write-review",
+        "trigger": {
+          "element": "navigate(\"/write-review\")",
+          "line": 13,
+          "endLine": 13,
+          "column": 4,
+          "endColumn": 29,
+          "sourceFile": "src/routes/Review/screens/ThankYouConfirmation.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/Review/screens/ThankYouConfirmation.jsx:17:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/Review/screens/ThankYouConfirmation.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 17,
+          "endLine": 17,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/routes/Review/screens/ThankYouConfirmation.jsx"
+        }
+      }
+    },
+    {
+      "id": "src/routes/FeedbackForms/screens/RelationshipForm.jsx:58:4-to-src/screens/Dashboard/Dashboard.jsx",
+      "source": "src/routes/FeedbackForms/screens/RelationshipForm.jsx",
+      "target": "src/screens/Dashboard/Dashboard.jsx",
+      "data": {
+        "viaRoute": "/dashboard",
+        "trigger": {
+          "element": "navigate(\"/dashboard\")",
+          "line": 58,
+          "endLine": 58,
+          "column": 4,
+          "endColumn": 26,
+          "sourceFile": "src/routes/FeedbackForms/screens/RelationshipForm.jsx"
+        }
+      }
+    }
+  ]
+}
