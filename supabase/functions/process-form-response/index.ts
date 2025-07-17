@@ -2,8 +2,8 @@
 // https://deno.land/manual/getting_started/setup_your_environment
 // This enables autocomplete, go to definition, etc.
 
-import { serve } from "npm:@supabase/functions-js@2.1.5";
-import { createClient } from "npm:@supabase/supabase-js@2.31.0";
+import { serve } from "npm:@supabase/functions-js";
+import { createClient } from "npm:@supabase/supabase-js";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -23,7 +23,7 @@ serve(async (req) => {
     // Create a Supabase client with the Auth context of the function
     const supabaseClient = createClient(
       Deno.env.get('SUPABASE_URL') ?? '',
-      Deno.env.get('SUPABASE_ANON_KEY') ?? '',
+      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '',
       { global: { headers: { Authorization: req.headers.get('Authorization')! } } }
     );
 
@@ -32,10 +32,27 @@ serve(async (req) => {
     
     console.log("Received form response:", { formId, emotion, answers });
     
-    if (!formId || !emotion || !answers) {
-      console.error("Missing required fields:", { formId, emotion, answers });
+    // Validate required fields
+    if (!formId) {
+      console.error("Missing form ID");
       return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
+        JSON.stringify({ error: 'Missing form ID' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      );
+    }
+    
+    if (!emotion) {
+      console.error("Missing emotion");
+      return new Response(
+        JSON.stringify({ error: 'Missing emotion' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
+      );
+    }
+    
+    if (!answers || !Array.isArray(answers)) {
+      console.error("Missing or invalid answers");
+      return new Response(
+        JSON.stringify({ error: 'Answers must be an array' }),
         { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 400 }
       );
     }
@@ -59,6 +76,31 @@ serve(async (req) => {
     
     console.log("Response saved successfully:", data);
     
+    // Get the form to notify the owner
+    const { data: formData, error: formError } = await supabaseClient
+      .from('forms')
+      .select('user_id')
+      .eq('id', formId)
+      .single();
+      
+    if (!formError && formData) {
+      // Create a notification for the form owner
+      const { error: notifError } = await supabaseClient
+        .from('notifications')
+        .insert({
+          user_id: formData.user_id,
+          type: 'feedback_received',
+          title: 'New Feedback Received',
+          message: `Someone responded to your ${emotion} feedback form`,
+          data: { formId },
+          read: false
+        });
+        
+      if (notifError) {
+        console.error("Error creating notification:", notifError);
+      }
+    }
+    
     // Return the response
     return new Response(
       JSON.stringify({ success: true, data }),
@@ -69,7 +111,14 @@ serve(async (req) => {
     
     return new Response(
       JSON.stringify({ error: error.message }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
+      { 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'X-Error-Source': 'process-form-response'
+        }, 
+        status: 500 
+      }
     );
   }
 });

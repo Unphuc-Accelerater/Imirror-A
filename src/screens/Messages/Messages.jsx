@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
 import { BackButton } from "../../components/UI/BackButton";
-import { FooterNavBar } from "../../components/FooterNavBar/FooterNavBar";
+import { FooterNavBar } from "../../components/FooterNavBar";
 import { db } from "../../utils/database";
 import { toast } from "../../components/UI/Toast";
+import { supabase } from "../../utils/supabaseClient";
 
 export const Messages = () => {
   const navigate = useNavigate();
@@ -16,7 +17,78 @@ export const Messages = () => {
   useEffect(() => {
     const loadMessages = async () => {
       try {
-        setLoading(true);
+        setLoading(true);  
+        
+        // Try to get responses from Supabase
+        const { data: { user } } = await supabase.auth.getUser();
+        const userId = user?.id || 'anonymous';
+        
+        // Get forms created by this user
+        const { data: forms, error: formsError } = await supabase
+          .from('forms')
+          .select('*')
+          .eq('user_id', userId);
+          
+        if (formsError) {
+          console.error('Error fetching forms:', formsError);
+          throw formsError;
+        }
+        
+        // Get responses for these forms
+        let allResponses = [];
+        if (forms && forms.length > 0) {
+          const formIds = forms.map(form => form.id);
+          
+          const { data: responses, error: responsesError } = await supabase
+            .from('feedback_responses')
+            .select('*')
+            .in('form_id', formIds);
+            
+          if (responsesError) {
+            console.error('Error fetching responses:', responsesError);
+            throw responsesError;
+          }
+          
+          if (responses && responses.length > 0) {
+            allResponses = responses;
+          }
+        }
+        
+        // If we have real responses, use them
+        if (allResponses.length > 0) {
+          const messageMap = new Map();
+          
+          allResponses.forEach(response => {
+            const form = forms.find(f => f.id === response.form_id);
+            if (!form) return;
+            
+            const messageId = `form-${form.id}`;
+            if (!messageMap.has(messageId)) {
+              messageMap.set(messageId, {
+                id: messageId,
+                title: "New Feedback Received",
+                message: `Someone responded to your ${form.emotion} form`,
+                createdAt: response.submitted_at,
+                read: false,
+                form: {
+                  title: `${form.emotion.charAt(0).toUpperCase() + form.emotion.slice(1)} Feedback`,
+                  id: form.id,
+                  emotion: form.emotion
+                },
+                responses: []
+              });
+            }
+            
+            messageMap.get(messageId).responses.push(response);
+          });
+          
+          const messagesArray = Array.from(messageMap.values())
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+          
+          setMessages(messagesArray);
+          setLoading(false);
+          return;
+        }
         
         // Simulate loading responses from Google Forms
         // In a real app, this would fetch from Supabase
@@ -218,7 +290,7 @@ export const Messages = () => {
           <div className="space-y-4">
             {messages.map((message, index) => (
               <motion.div
-                key={message.id}
+                key={`message-${index}`}
                 className="bg-white rounded-2xl shadow-lg p-4 cursor-pointer relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -276,7 +348,7 @@ export const Messages = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('/request-feedback')}
             >
-              Create Your First Form
+              Create Feedback Form
             </motion.button>
           </motion.div>
         )}

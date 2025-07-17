@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { db } from "../../../utils/database"; 
 import { toast } from "../../../components/UI/Toast";
+import { supabase } from "../../../utils/supabaseClient";
 
 export const PersonalGrowthForm = () => {
   const navigate = useNavigate();
@@ -41,6 +42,10 @@ export const PersonalGrowthForm = () => {
   const createAndShareForm = async (shareMethod) => {
     setIsSharing(true);
     try {
+      // Get current user ID
+      const { data: { user } } = await supabase.auth.getUser();
+      const userId = user?.id || 'anonymous';
+      
       const formData = {
         title: "Personal Growth Feedback",
         type: "personal-growth",
@@ -134,12 +139,10 @@ Best regards`;
           <div className="w-full overflow-hidden rounded-xl mb-6">
             <div className="relative" style={{ paddingTop: '120%' }}>
               <iframe 
-                src="https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform?embedded=true" 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform?embedded=true&usp=pp_url&entry.1=anonymous" 
                 width="100%" 
                 height="100%" 
-                frameBorder="0" 
-                marginHeight="0" 
-                marginWidth="0"
+                style={{ border: 'none' }}
                 className="rounded-xl absolute top-0 left-0 w-full h-full"
               >
                 Loading…
@@ -166,9 +169,28 @@ Best regards`;
               className="w-full h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl text-white font-bold flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.02, boxShadow: "0px 8px 20px rgba(59,130,246,0.4)" }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                navigator.clipboard.writeText("https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform");
+              onClick={async () => {
+                await navigator.clipboard.writeText("https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform");
                 toast.success("Form link copied to clipboard!");
+                
+                // Store form in Supabase
+                try {
+                  const { data: { user } } = await supabase.auth.getUser();
+                  const userId = user?.id || 'anonymous';
+                  
+                  const { data, error } = await supabase
+                    .from('forms')
+                    .insert({
+                      user_id: userId,
+                      emotion: 'personal-growth',
+                      form_url: "https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform",
+                      questions: questions
+                    });
+                    
+                  if (error) throw error;
+                } catch (err) {
+                  console.error("Error storing form:", err);
+                }
               }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-3">
@@ -183,10 +205,29 @@ Best regards`;
               whileHover={{ scale: 1.02, boxShadow: "0px 8px 20px rgba(16,185,129,0.4)" }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                const message = `Hi! I'd love your honest feedback on my personal growth journey. Please take a moment to fill out this quick form: https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform`;
+                const message = `Hi! I'd love your honest feedback on my personal growth journey. Please take a moment to fill out this quick form: https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform?usp=pp_url&entry.1=anonymous`;
                 const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
                 window.open(whatsappUrl, "_blank");
                 toast.success("WhatsApp opened with your feedback form!");
+                
+                // Store form in Supabase
+                try {
+                  const { data: { user } } = await supabase.auth.getUser();
+                  const userId = user?.id || 'anonymous';
+                  
+                  const { data, error } = await supabase
+                    .from('forms')
+                    .insert({
+                      user_id: userId,
+                      emotion: 'personal-growth',
+                      form_url: "https://docs.google.com/forms/d/e/1FAIpQLSeat8tbyjCaJNX3Ywlw2a5D0PfZu3gbEfo5YaoxdhuhmZcnBw/viewform",
+                      questions: questions
+                    });
+                    
+                  if (error) throw error;
+                } catch (err) {
+                  console.error("Error storing form:", err);
+                }
               }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="mr-3">
@@ -199,14 +240,12 @@ Best regards`;
           <div className="mt-6 p-4 bg-blue-50 rounded-2xl">
             <div className="flex items-start">
               <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3 mt-0.5">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 16V12M12 8H12.01" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <span className="text-white text-xs font-bold">i</span>
               </div>
               <div>
                 <h3 className="font-semibold text-blue-800 mb-1">How it works</h3>
                 <p className="text-sm text-blue-700 leading-relaxed">
-                  Your friends will receive this Google Form. Their responses will be collected anonymously and you'll get insights in your Messages tab to help with your personal growth journey.
+                  Your friends will receive this Google Form. Their responses will be collected anonymously and you'll get insights in your Messages tab to help with your personal growth journey. Check the Messages tab in the footer navigation to see responses.
                 </p>
               </div>
             </div>
@@ -214,5 +253,5 @@ Best regards`;
         </motion.div>
       </div>
     </div>
-  );
+  );  
 };
