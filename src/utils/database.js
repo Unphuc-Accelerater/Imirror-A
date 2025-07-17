@@ -1,15 +1,12 @@
-// Complete database simulation for iMirror app
-import { storage } from './storage';
-
-// Simulate database with localStorage
+// Complete database simulation for iMirror feedback app
 class Database {
   constructor() {
     this.tables = {
-      users: 'users',
-      feedbackForms: 'feedbackForms',
-      responses: 'responses',
-      sessions: 'sessions',
-      notifications: 'notifications'
+      users: 'imirror_users',
+      feedbackForms: 'imirror_feedback_forms',
+      responses: 'imirror_responses',
+      notifications: 'imirror_notifications',
+      sessions: 'imirror_sessions'
     };
   }
 
@@ -114,78 +111,99 @@ class Database {
       });
     }
   }
+
+  // API interface
+  api = {
+    // Feedback Forms
+    feedbackForms: {
+      create: async (formData) => {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const form = this.createFeedbackForm(formData);
+        return { success: true, data: form };
+      },
+
+      getById: async (id) => {
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const form = this.getFeedbackForm(id);
+        if (!form) {
+          return { success: false, error: 'Form not found' };
+        }
+        return { success: true, data: form };
+      },
+
+      submitResponse: async (formId, responseData) => {
+        await new Promise(resolve => setTimeout(resolve, 800));
+        const response = this.submitResponse(formId, responseData);
+        return { success: true, data: response };
+      },
+
+      getResponses: async (formId) => {
+        await new Promise(resolve => setTimeout(resolve, 400));
+        const responses = this.getFormResponses(formId);
+        return { success: true, data: responses };
+      },
+
+      share: async (formId, method) => {
+        await new Promise(resolve => setTimeout(resolve, 200));
+        this.incrementShareCount(formId);
+        return { success: true, method };
+      }
+    },
+
+    // Notifications
+    notifications: {
+      create: async (notificationData) => {
+        await new Promise(resolve => setTimeout(resolve, 200));
+        const notification = this.create(this.tables.notifications, notificationData);
+        return { success: true, data: notification };
+      },
+
+      getAll: async () => {
+        await new Promise(resolve => setTimeout(resolve, 300));
+        const notifications = this.getAll(this.tables.notifications);
+        return { success: true, data: notifications };
+      },
+
+      markAsRead: async (id) => {
+        await new Promise(resolve => setTimeout(resolve, 200));
+        const notification = this.update(this.tables.notifications, id, { read: true });
+        return { success: true, data: notification };
+      }
+    },
+
+    // Users
+    users: {
+      create: async (userData) => {
+        await new Promise(resolve => setTimeout(resolve, 600));
+        const user = this.create(this.tables.users, userData);
+        return { success: true, data: user };
+      },
+
+      update: async (id, userData) => {
+        await new Promise(resolve => setTimeout(resolve, 400));
+        const user = this.update(this.tables.users, id, userData);
+        return { success: true, data: user };
+      },
+
+      getById: async (id) => {
+        await new Promise(resolve => setTimeout(resolve, 200));
+        const user = this.getById(this.tables.users, id);
+        return { success: true, data: user };
+      }
+    },
+
+    // Sessions
+    sessions: {
+      book: async (sessionData) => {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        const session = this.create(this.tables.sessions, {
+          ...sessionData,
+          status: 'confirmed'
+        });
+        return { success: true, data: session };
+      }
+    }
+  };
 }
 
 export const db = new Database();
-
-// API functions using the database
-export const api = {
-  // Feedback Forms
-  feedbackForms: {
-    create: async (formData) => {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      const form = db.createFeedbackForm(formData);
-      return { success: true, data: form };
-    },
-
-    getById: async (id) => {
-      await new Promise(resolve => setTimeout(resolve, 300));
-      const form = db.getFeedbackForm(id);
-      if (!form) {
-        return { success: false, error: 'Form not found' };
-      }
-      return { success: true, data: form };
-    },
-
-    submitResponse: async (formId, responseData) => {
-      await new Promise(resolve => setTimeout(resolve, 800));
-      const response = db.submitResponse(formId, responseData);
-      return { success: true, data: response };
-    },
-
-    getResponses: async (formId) => {
-      await new Promise(resolve => setTimeout(resolve, 400));
-      const responses = db.getFormResponses(formId);
-      return { success: true, data: responses };
-    },
-
-    share: async (formId, method) => {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      db.incrementShareCount(formId);
-      return { success: true, method };
-    }
-  },
-
-  // Users
-  users: {
-    create: async (userData) => {
-      await new Promise(resolve => setTimeout(resolve, 600));
-      const user = db.create(db.tables.users, userData);
-      return { success: true, data: user };
-    },
-
-    update: async (id, userData) => {
-      await new Promise(resolve => setTimeout(resolve, 400));
-      const user = db.update(db.tables.users, id, userData);
-      return { success: true, data: user };
-    },
-
-    getById: async (id) => {
-      await new Promise(resolve => setTimeout(resolve, 200));
-      const user = db.getById(db.tables.users, id);
-      return { success: true, data: user };
-    }
-  },
-
-  // Sessions
-  sessions: {
-    book: async (sessionData) => {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      const session = db.create(db.tables.sessions, {
-        ...sessionData,
-        status: 'confirmed'
-      });
-      return { success: true, data: session };
-    }
-  }
-};

@@ -29,6 +29,7 @@ import { PaymentSelection } from "./routes/Payment/screens/PaymentSelection";
 import { PaymentSuccess } from "./routes/Payment/screens/PaymentSuccess";
 import { WriteReview, ThankYouConfirmation } from "./routes/Review";
 import { HelpFAQ } from "./routes/HelpFAQ/screens/HelpFAQ";
+import { Messages } from "./screens/Messages/Messages";
 
 // Import feedback forms
 import { PersonalGrowthForm } from "./routes/FeedbackForms/screens/PersonalGrowthForm";
@@ -177,6 +178,10 @@ const router = createBrowserRouter([
   {
     path: "/feedback/form/:formId",
     element: <FeedbackFormViewer />,
+  },
+  {
+    path: "/messages",
+    element: <Messages />,
   },
 ]);
 
