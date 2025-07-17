@@ -1,0 +1,249 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --body-base-font-family: "Inter", Helvetica;
+  --body-base-font-size: 16px;
+  --body-base-font-style: normal;
+  --body-base-font-weight: 400;
+  --body-base-letter-spacing: 0px;
+  --body-base-line-height: 139.9999976158142%;
+  --color-background-brand-default: rgba(44, 44, 44, 1);
+  --color-background-brand-hover: rgba(30, 30, 30, 1);
+  --color-border-brand-default: rgba(44, 44, 44, 1);
+  --color-primitives-brand-100: rgba(245, 245, 245, 1);
+  --color-primitives-brand-300: rgba(217, 217, 217, 1);
+  --color-primitives-brand-800: rgba(44, 44, 44, 1);
+  --color-primitives-brand-900: rgba(30, 30, 30, 1);
+  --color-text-brand-on-brand: rgba(245, 245, 245, 1);
+  --d-9d-9d-9: rgba(217, 217, 217, 1);
+  --default-bold-body-font-family: "SF Pro Text", Helvetica;
+  --default-bold-body-font-size: 17px;
+  --default-bold-body-font-style: normal;
+  --default-bold-body-font-weight: 400;
+  --default-bold-body-letter-spacing: -0.40799999237060547px;
+  --default-bold-body-line-height: 22px;
+  --defaultsystemgreenlight: rgba(52, 199, 89, 1);
+  --drop-shadow-radius-24: 0px 11px 24px 0px rgba(0, 0, 0, 0.1), 0px 44px 44px 0px rgba(0, 0, 0, 0.09), 0px 100px 60px 0px rgba(0, 0, 0, 0.05), 0px 178px 71px 0px rgba(0, 0, 0, 0.01), 0px 278px 78px 0px rgba(0, 0, 0, 0);
+  --drop-shadow-radius-4: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --heading-font-family: "Inter", Helvetica;
+  --heading-font-size: 24px;
+  --heading-font-style: normal;
+  --heading-font-weight: 600;
+  --heading-letter-spacing: -0.48px;
+  --heading-line-height: 120.00000476837158%;
+  --inkdarkest: rgba(9, 10, 10, 1);
+  --inklight: rgba(108, 112, 114, 1);
+  --inklighter: rgba(114, 119, 122, 1);
+  --inter-regular-font-family: "Inter", Helvetica;
+  --inter-regular-font-size: 16px;
+  --inter-regular-font-style: normal;
+  --inter-regular-font-weight: 500;
+  --inter-regular-letter-spacing: 0px;
+  --inter-regular-line-height: normal;
+  --inter-thin-font-family: "Inter", Helvetica;
+  --inter-thin-font-size: 64px;
+  --inter-thin-font-style: normal;
+  --inter-thin-font-weight: 100;
+  --inter-thin-letter-spacing: 0px;
+  --inter-thin-line-height: normal;
+  --label-colorlightprimary: rgba(0, 0, 0, 1);
+  --large-none-bold-font-family: "Inter", Helvetica;
+  --large-none-bold-font-size: 18px;
+  --large-none-bold-font-style: normal;
+  --large-none-bold-font-weight: 700;
+  --large-none-bold-letter-spacing: 0px;
+  --large-none-bold-line-height: 18px;
+  --large-none-medium-font-family: "Inter", Helvetica;
+  --large-none-medium-font-size: 18px;
+  --large-none-medium-font-style: normal;
+  --large-none-medium-font-weight: 500;
+  --large-none-medium-letter-spacing: 0px;
+  --large-none-medium-line-height: 18px;
+  --large-normal-bold-font-family: "Inter", Helvetica;
+  --large-normal-bold-font-size: 18px;
+  --large-normal-bold-font-style: normal;
+  --large-normal-bold-font-weight: 700;
+  --large-normal-bold-letter-spacing: 0px;
+  --large-normal-bold-line-height: 24px;
+  --new-fill-000000: rgba(0, 0, 0, 1);
+  --new-fill-1025dd: rgba(16, 37, 221, 1);
+  --new-fill-1a53d9: rgba(26, 83, 217, 1);
+  --new-fill-20c93f: rgba(32, 201, 63, 1);
+  --new-fill-2f2b2b: rgba(47, 43, 43, 1);
+  --new-fill-3a3cb9: rgba(58, 60, 185, 1);
+  --new-fill-4d1bf1: rgba(77, 27, 241, 1);
+  --new-fill-6e9de3: rgba(110, 157, 227, 1);
+  --new-fill-729fe7: rgba(114, 159, 231, 1);
+  --new-fill-73a3ec: rgba(115, 163, 236, 1);
+  --new-fill-74a4ee: rgba(116, 164, 238, 1);
+  --new-fill-bfbfbf: rgba(191, 191, 191, 0.44);
+  --new-fill-ebe9e9: rgba(235, 233, 233, 1);
+  --new-fill-f1e4f4: rgba(241, 228, 244, 1);
+  --new-fill-f5f5f5: rgba(245, 245, 245, 1);
+  --new-fill-f6f6f6: rgba(246, 246, 246, 1);
+  --new-fill-fcfcfc: rgba(252, 252, 252, 1);
+  --new-fill-ffffff: rgba(255, 255, 255, 1);
+  --new-stroke-style: rgba(142, 175, 236, 1);
+  --open-sans-bold-font-family: "Open Sans", Helvetica;
+  --open-sans-bold-font-size: 75px;
+  --open-sans-bold-font-style: normal;
+  --open-sans-bold-font-weight: 700;
+  --open-sans-bold-letter-spacing: 0px;
+  --open-sans-bold-line-height: 32px;
+  --open-sans-light-font-family: "Open Sans", Helvetica;
+  --open-sans-light-font-size: 40px;
+  --open-sans-light-font-style: normal;
+  --open-sans-light-font-weight: 300;
+  --open-sans-light-letter-spacing: 0px;
+  --open-sans-light-line-height: 32px;
+  --open-sans-regular-font-family: "Open Sans", Helvetica;
+  --open-sans-regular-font-size: 64px;
+  --open-sans-regular-font-style: normal;
+  --open-sans-regular-font-weight: 400;
+  --open-sans-regular-letter-spacing: 0px;
+  --open-sans-regular-line-height: 32px;
+  --open-sans-semibold-font-family: "Open Sans", Helvetica;
+  --open-sans-semibold-font-size: 24px;
+  --open-sans-semibold-font-style: normal;
+  --open-sans-semibold-font-weight: 600;
+  --open-sans-semibold-letter-spacing: 0px;
+  --open-sans-semibold-line-height: 100%;
+  --primarybase: rgba(107, 78, 255, 1);
+  --primarylightest: rgba(231, 231, 255, 1);
+  --regular-none-medium-font-family: "Inter", Helvetica;
+  --regular-none-medium-font-size: 16px;
+  --regular-none-medium-font-style: normal;
+  --regular-none-medium-font-weight: 500;
+  --regular-none-medium-letter-spacing: 0px;
+  --regular-none-medium-line-height: 16px;
+  --regular-none-regular-font-family: "Inter", Helvetica;
+  --regular-none-regular-font-size: 16px;
+  --regular-none-regular-font-style: normal;
+  --regular-none-regular-font-weight: 400;
+  --regular-none-regular-letter-spacing: 0px;
+  --regular-none-regular-line-height: 16px;
+  --regular-normal-bold-font-family: "Inter", Helvetica;
+  --regular-normal-bold-font-size: 16px;
+  --regular-normal-bold-font-style: normal;
+  --regular-normal-bold-font-weight: 700;
+  --regular-normal-bold-letter-spacing: 0px;
+  --regular-normal-bold-line-height: 24px;
+  --regular-normal-regular-font-family: "Inter", Helvetica;
+  --regular-normal-regular-font-size: 16px;
+  --regular-normal-regular-font-style: normal;
+  --regular-normal-regular-font-weight: 400;
+  --regular-normal-regular-letter-spacing: 0px;
+  --regular-normal-regular-line-height: 24px;
+  --roboto-medium-font-family: "Roboto", Helvetica;
+  --roboto-medium-font-size: 14px;
+  --roboto-medium-font-style: normal;
+  --roboto-medium-font-weight: 500;
+  --roboto-medium-letter-spacing: 0px;
+  --roboto-medium-line-height: 32px;
+  --roboto-regular-font-family: "Roboto", Helvetica;
+  --roboto-regular-font-size: 48px;
+  --roboto-regular-font-style: normal;
+  --roboto-regular-font-weight: 400;
+  --roboto-regular-letter-spacing: 0px;
+  --roboto-regular-line-height: 32px;
+  --skydark: rgba(151, 156, 158, 1);
+  --skywhite: rgba(255, 255, 255, 1);
+  --small-none-regular-font-family: "Inter", Helvetica;
+  --small-none-regular-font-size: 14px;
+  --small-none-regular-font-style: normal;
+  --small-none-regular-font-weight: 400;
+  --small-none-regular-letter-spacing: 0px;
+  --small-none-regular-line-height: 14px;
+  --single-line-body-base-font-family: "Inter", Helvetica;
+  --single-line-body-base-font-size: 16px;
+  --single-line-body-base-font-style: normal;
+  --single-line-body-base-font-weight: 400;
+  --single-line-body-base-letter-spacing: 0px;
+  --single-line-body-base-line-height: 100%;
+  --size-radius-200: 8px;
+  --size-space-200: 8px;
+  --size-space-300: 12px;
+  --skylight: rgba(227, 229, 229, 1);
+  --system-colors-labels-primary: rgba(0, 0, 0, 1);
+  --tiny-normal-regular-font-family: "Inter", Helvetica;
+  --tiny-normal-regular-font-size: 12px;
+  --tiny-normal-regular-font-style: normal;
+  --tiny-normal-regular-font-weight: 400;
+  --tiny-normal-regular-letter-spacing: 0px;
+  --tiny-normal-regular-line-height: 16px;
+  --title-2-font-family: "Inter", Helvetica;
+  --title-2-font-size: 32px;
+  --title-2-font-style: normal;
+  --title-2-font-weight: 700;
+  --title-2-letter-spacing: 0px;
+  --title-2-line-height: 36px;
+  --title-3-font-family: "Inter", Helvetica;
+  --title-3-font-size: 24px;
+  --title-3-font-style: normal;
+  --title-3-font-weight: 700;
+  --title-3-letter-spacing: 0px;
+  --title-3-line-height: 32px;
+}
+
+/*
+
+To enable a theme in your HTML, simply add one of the following data attributes to an HTML element, like so:
+
+<body data-color-mode="SDS-light">
+    <!-- the rest of your content -->
+</body>
+
+You can apply the theme on any DOM node, not just the `body`
+
+*/
+
+[data-color-mode="SDS-light"] {
+  --color-background-brand-default: var(--color-primitives-brand-800);
+  --color-background-brand-hover: var(--color-primitives-brand-900);
+  --color-border-brand-default: var(--color-primitives-brand-800);
+  --color-text-brand-on-brand: var(--color-primitives-brand-100);
+}
+
+[data-color-mode="SDS-dark"] {
+  --color-background-brand-default: var(--color-primitives-brand-100);
+  --color-background-brand-hover: var(--color-primitives-brand-300);
+  --color-border-brand-default: var(--color-primitives-brand-100);
+  --color-text-brand-on-brand: var(--color-primitives-brand-900);
+}
+
+[data-color-mode="brand-b-light"] {
+  --color-background-brand-hover: var(--color-primitives-brand-900);
+  --color-border-brand-default: var(--color-primitives-brand-800);
+  --color-text-brand-on-brand: var(--color-primitives-brand-100);
+}
+
+[data-system-colors-mode="light"] {
+  --system-colors-labels-primary: rgba(0, 0, 0, 1);
+}
+
+[data-system-colors-mode="dark"] {
+  --system-colors-labels-primary: rgba(255, 255, 255, 1);
+}
+
+[data-system-colors-mode="dark-elevated"] {
+  --system-colors-labels-primary: rgba(255, 255, 255, 1);
+}
+
+[data-system-colors-mode="IC-light"] {
+  --system-colors-labels-primary: rgba(0, 0, 0, 1);
+}
+
+[data-system-colors-mode="IC-dark"] {
+  --system-colors-labels-primary: rgba(255, 255, 255, 1);
+}
+
+[data-system-colors-mode="IC-dark-elevated"] {
+  --system-colors-labels-primary: rgba(255, 255, 255, 1);
+}

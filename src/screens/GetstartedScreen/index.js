@@ -1,0 +1,1 @@
+export { GetstartedScreen } from "./GetstartedScreen";

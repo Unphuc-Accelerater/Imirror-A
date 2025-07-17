@@ -1,0 +1,1 @@
+export { Getstarted } from "./Getstarted";
