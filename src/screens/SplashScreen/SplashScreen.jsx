@@ -1,39 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity,
-  Modal,
-  Dimensions
-} from 'react-native';
-import Animated, { 
-  useSharedValue, 
-  useAnimatedStyle, 
-  withTiming,
-  withSequence
-} from 'react-native-reanimated';
-import Button from '../components/Button';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const { width } = Dimensions.get('window');
-
-const EnterOTP = ({ navigation, route }) => {
-  const { phoneNumber } = route.params || { phoneNumber: '' };
-  const [otp, setOtp] = useState(['', '', '', '']);
-  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
-  const [activeInputIndex, setActiveInputIndex] = useState(0);
-  const [resendCountdown, setResendCountdown] = useState(25);
-  const [isResendEnabled, setIsResendEnabled] = useState(false);
-  const [isContinueEnabled, setIsContinueEnabled] = useState(false);
-
-  // Animation values
-  const buttonScale = useSharedValue(1);
-  const otpContainerScale = useSharedValue(1);
+const SplashScreen = () => {
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if all OTP digits are filled
-    const isComplete = otp.every(digit => digit !== "");
-    setIsContinueEnabled(isComplete);
-  }, [otp]);
+    // Navigate to get started screen after 2 seconds
+    const timer = setTimeout(() => {
+      navigate('/getstarted1');
+    }, 2000);
 
-  useEffect(() => {
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600"
+    >
+      <div className="text-center">
+        <motion.h1
+          initial={{ scale: 0.5 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-white mb-4"
+        >
+          iMirror
+        </motion.h1>
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          className="w-8 h-8 border-4 border-white border-t-transparent rounded-full mx-auto"
+        />
+      </div>
+    </motion.div>
+  );
+};
+
+export default SplashScreen;
