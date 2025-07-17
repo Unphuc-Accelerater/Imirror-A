@@ -4,89 +4,60 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
 import { BackButton } from "../../components/UI/BackButton";
 import { FooterNavBar } from "../../components/FooterNavBar";
+import { db } from "../../utils/database";
 
 export const Messages = () => {
   const navigate = useNavigate();
-  const [messages, setMessages] = useState([
-    {
-      id: "msg1",
-      title: "New Feedback Received",
-      message: "Someone responded to your Personal Growth form",
-      createdAt: new Date().toISOString(),
-      read: false,
-      form: {
-        title: "Personal Growth Feedback",
-        id: "form1"
-      },
-      responses: [
-        {
-          id: "resp1",
-          responses: [
-            {
-              question: "What's one habit I've improved in the last 3 months?",
-              answer: "You've become much more consistent with your exercise routine. I've noticed you're making time for it even when your schedule is busy."
-            },
-            {
-              question: "Where do you see growth in me recently?",
-              answer: "Your communication skills have improved significantly. You're more open about your feelings and better at listening without immediately responding."
-            },
-            {
-              question: "What should I focus on next to continue growing?",
-              answer: "I think you could work on being more patient with yourself. You've made great progress but sometimes you're too hard on yourself when things don't change as quickly as you'd like."
-            },
-            {
-              question: "How do I handle challenges or discomfort now vs. before?",
-              answer: "You're much better at staying calm when facing challenges. Before you would get visibly stressed, but now you take a moment to breathe and approach problems more methodically."
-            }
-          ],
-          submittedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString()
-        }
-      ]
-    },
-    {
-      id: "msg2",
-      title: "New Google Form Response",
-      message: "Someone responded to your Personal Growth Google Form",
-      createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
-      read: true,
-      form: {
-        title: "Personal Growth Google Form",
-        id: "form2"
-      },
-      responses: [
-        {
-          id: "resp2",
-          responses: [
-            {
-              question: "What's one habit I've improved in the last 3 months?",
-              answer: "Your time management has improved a lot. You're much better at prioritizing important tasks and saying no to things that don't align with your goals."
-            },
-            {
-              question: "Where do you see growth in me recently?",
-              answer: "I've noticed you're more confident in social situations. You seem more comfortable expressing your opinions even when they differ from others."
-            },
-            {
-              question: "What should I focus on next to continue growing?",
-              answer: "Maybe work on maintaining a better work-life balance. You've made great strides in productivity, but sometimes at the expense of personal time."
-            },
-            {
-              question: "How do I handle challenges or discomfort now vs. before?",
-              answer: "You're more proactive about addressing issues instead of avoiding them. You face uncomfortable situations head-on rather than procrastinating."
-            }
-          ],
-          submittedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString()
-        }
-      ]
-    }
-  ]);
+  const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   useEffect(() => {
-    // Simulate loading
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+    const loadMessages = async () => {
+      try {
+        const responses = await db.api.feedbackResponses.getAll();
+        const forms = await db.api.feedbackForms.getAll();
+        
+        // Group responses by form and create messages
+        const messageMap = new Map();
+        
+        responses.forEach(response => {
+          const form = forms.find(f => f.id === response.form_id);
+          if (!form) return;
+          
+          const messageId = `form-${form.id}`;
+          if (!messageMap.has(messageId)) {
+            messageMap.set(messageId, {
+              id: messageId,
+              title: "New Feedback Received",
+              message: `Someone responded to your ${form.emotion} form`,
+              createdAt: response.submitted_at,
+              read: false,
+              form: {
+                title: `${form.emotion.charAt(0).toUpperCase() + form.emotion.slice(1)} Feedback`,
+                id: form.id,
+                emotion: form.emotion
+              },
+              responses: []
+            });
+          }
+          
+          messageMap.get(messageId).responses.push(response);
+        });
+        
+        const messagesArray = Array.from(messageMap.values())
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        
+        setMessages(messagesArray);
+      } catch (error) {
+        console.error('Error loading messages:', error);
+        setMessages([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadMessages();
   }, []);
 
   const handleGoBack = () => {
@@ -95,7 +66,7 @@ export const Messages = () => {
 
   const handleMessageClick = (message) => {
     setSelectedMessage(message);
-    // Mark as read (in a real app, this would update the database)
+    // Mark as read
     setMessages(prevMessages => 
       prevMessages.map(msg => 
         msg.id === message.id ? {...msg, read: true} : msg
@@ -146,7 +117,7 @@ export const Messages = () => {
         </div>
 
         {/* Message Content */}
-        <div className="px-6 -mt-3">
+        <div className="px-6 -mt-3 pb-24">
           <motion.div
             className="bg-white rounded-3xl shadow-xl p-6"
             initial={{ opacity: 0, y: 50 }}
@@ -163,7 +134,7 @@ export const Messages = () => {
                 {selectedMessage.responses.map((response, index) => (
                   <div key={index} className="bg-gray-50 rounded-2xl p-4">
                     <div className="space-y-4">
-                      {response.responses.map((item, qIndex) => (
+                      {response.answers && response.answers.map((item, qIndex) => (
                         <div key={qIndex}>
                           <h3 className="font-semibold text-gray-800 mb-2">{item.question}</h3>
                           <div className="bg-white rounded-xl p-4 border-l-4 border-[#74a4ee]">
@@ -182,6 +153,8 @@ export const Messages = () => {
             )}
           </motion.div>
         </div>
+
+        <FooterNavBar />
       </div>
     );
   }
@@ -204,7 +177,7 @@ export const Messages = () => {
             {messages.map((message, index) => (
               <motion.div
                 key={message.id}
-                className="bg-white rounded-2xl shadow-lg p-4 cursor-pointer"
+                className="bg-white rounded-2xl shadow-lg p-4 cursor-pointer relative"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
