@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { api } from "../../../utils/database";
+import { db } from "../../../utils/database";
 import { toast } from "../../../components/UI/Toast";
 
 export const PersonalGrowthForm = () => {
@@ -48,13 +48,13 @@ export const PersonalGrowthForm = () => {
         description: "Help me understand my personal growth journey"
       };
 
-      const result = await api.feedbackForms.create(formData);
+      const result = await db.api.feedbackForms.create(formData);
       
       if (result.success) {
         const form = result.data;
         
         // Track share
-        await api.feedbackForms.share(form.id, shareMethod);
+        await db.api.feedbackForms.share(form.id, shareMethod);
         
         if (shareMethod === 'whatsapp') {
           const message = `Hi! I'd love your honest feedback on my personal growth journey. Please take a moment to fill out this quick form: ${form.shareUrl}
