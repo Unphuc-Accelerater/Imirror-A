@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { BackButton } from "../../../components/UI/BackButton";
 
 export const PaymentSelection = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const PaymentSelection = () => {
     let enabled = false;
     if (selectedMethod === "card") {
       enabled =
-        cardDetails.cardNumber.length === 16 &&
+        cardDetails.cardNumber.replace(/\s/g, "").length === 16 &&
         cardDetails.expiryDate.length === 5 &&
         cardDetails.cvv.length === 3 &&
         cardDetails.cardholderName.trim() !== "";
@@ -112,17 +113,9 @@ export const PaymentSelection = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-[#6e9de3] to-[#74a4ee] pt-12 pb-8">
         <div className="flex items-center justify-between px-6 mb-6">
-          <motion.button
-            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
-            whileTap={{ scale: 0.9 }}
-            onClick={handleGoBack}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 12H5M12 19L5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </motion.button>
+          <BackButton onClick={handleGoBack} style="dark" />
           <h1 className="text-white text-xl font-bold">Payment</h1>
-          <div className="w-10" />
+          <div className="w-12" />
         </div>
         
         <div className="text-center">

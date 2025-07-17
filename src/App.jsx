@@ -39,6 +39,7 @@ import { CommunicationForm } from "./routes/FeedbackForms/screens/CommunicationF
 import { ValuesForm } from "./routes/FeedbackForms/screens/ValuesForm";
 import { ConflictResolutionForm } from "./routes/FeedbackForms/screens/ConflictResolutionForm";
 import { RomanticForm } from "./routes/FeedbackForms/screens/RomanticForm";
+import { FeedbackFormViewer } from "./routes/FeedbackForms/screens/FeedbackFormViewer";
 
 const router = createBrowserRouter([
   {
@@ -173,6 +174,10 @@ const router = createBrowserRouter([
     path: "/feedback/romantic",
     element: <RomanticForm />,
   },
+  {
+    path: "/feedback/form/:formId",
+    element: <FeedbackFormViewer />,
+  },
 ]);
 
 export const App = () => {
@@ -222,6 +227,22 @@ export const App = () => {
         body {
           font-size: 16px;
         }
+      }
+      
+      /* Ensure all buttons are visible */
+      button {
+        min-height: 44px;
+        min-width: 44px;
+        position: relative;
+        z-index: 1;
+      }
+      
+      /* Back button visibility */
+      .back-button {
+        background: rgba(255, 255, 255, 0.9) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       }
     `;
     document.head.appendChild(style);

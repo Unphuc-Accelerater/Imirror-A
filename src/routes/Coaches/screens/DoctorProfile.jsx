@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { BackButton } from "../../../components/UI/BackButton";
 
 export const DoctorProfile = () => {
   const navigate = useNavigate();
@@ -18,24 +19,16 @@ export const DoctorProfile = () => {
       {/* Header */}
       <div className="bg-gradient-to-r from-[#6e9de3] to-[#74a4ee] pt-12 pb-20">
         <div className="flex items-center justify-between px-6">
-          <motion.button
-            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
-            whileTap={{ scale: 0.9 }}
-            onClick={handleGoBack}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 12H5M12 19L5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </motion.button>
+          <BackButton onClick={handleGoBack} style="dark" />
           <h1 className="text-white text-xl font-bold">Doctor Profile</h1>
-          <div className="w-10" />
+          <div className="w-12" />
         </div>
       </div>
 
-      {/* Profile Image - Centered */}
+      {/* Profile Image - Perfectly Centered */}
       <div className="flex justify-center -mt-16 mb-6 z-10 relative">
         <motion.div
-          className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white"
+          className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white flex items-center justify-center"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}

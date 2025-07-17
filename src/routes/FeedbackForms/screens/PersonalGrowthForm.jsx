@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { api } from "../../../utils/database";
 import { toast } from "../../../components/UI/Toast";
 
 export const PersonalGrowthForm = () => {
@@ -37,71 +38,56 @@ export const PersonalGrowthForm = () => {
     setQuestions([...questions, newQuestion]);
   };
 
-  const generateShareableLink = () => {
-    const formData = {
-      type: "personal-growth",
-      title: "Personal Growth Feedback",
-      questions: questions,
-      createdAt: new Date().toISOString(),
-      id: Date.now().toString()
-    };
-    
-    // In a real app, this would be sent to your backend
-    const encodedData = btoa(JSON.stringify(formData));
-    return `${window.location.origin}/feedback/form/${encodedData}`;
-  };
-
-  const handleCopyLink = async () => {
+  const createAndShareForm = async (shareMethod) => {
     setIsSharing(true);
     try {
-      const link = generateShareableLink();
-      await navigator.clipboard.writeText(link);
-      toast.success("Feedback form link copied to clipboard!");
-    } catch (error) {
-      toast.error("Failed to copy link. Please try again.");
-    } finally {
-      setIsSharing(false);
-    }
-  };
+      const formData = {
+        title: "Personal Growth Feedback",
+        type: "personal-growth",
+        questions: questions,
+        description: "Help me understand my personal growth journey"
+      };
 
-  const handleShareWhatsApp = () => {
-    setIsSharing(true);
-    try {
-      const link = generateShareableLink();
-      const message = `Hi! I'd love your honest feedback on my personal growth journey. Please take a moment to fill out this quick form: ${link}
+      const result = await api.feedbackForms.create(formData);
+      
+      if (result.success) {
+        const form = result.data;
+        
+        // Track share
+        await api.feedbackForms.share(form.id, shareMethod);
+        
+        if (shareMethod === 'whatsapp') {
+          const message = `Hi! I'd love your honest feedback on my personal growth journey. Please take a moment to fill out this quick form: ${form.shareUrl}
 
 Your feedback will help me understand how I'm growing and what areas I can focus on next. Thank you! 🌱`;
-      
-      const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank");
-      toast.success("WhatsApp opened with your feedback form!");
-    } catch (error) {
-      toast.error("Failed to open WhatsApp. Please try again.");
-    } finally {
-      setIsSharing(false);
-    }
-  };
-
-  const handleShareEmail = () => {
-    setIsSharing(true);
-    try {
-      const link = generateShareableLink();
-      const subject = "Personal Growth Feedback Request";
-      const body = `Hi there!
+          
+          const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+          window.open(whatsappUrl, "_blank");
+          toast.success("WhatsApp opened with your feedback form!");
+          
+        } else if (shareMethod === 'email') {
+          const subject = "Personal Growth Feedback Request";
+          const body = `Hi there!
 
 I'm working on my personal growth and would really value your honest feedback. Could you please take a few minutes to fill out this quick form?
 
-${link}
+${form.shareUrl}
 
 Your insights will help me understand how I'm progressing and what areas I should focus on next. Thank you so much for taking the time to help me grow!
 
 Best regards`;
-      
-      const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoUrl;
-      toast.success("Email client opened with your feedback form!");
+          
+          const mailtoUrl = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+          window.location.href = mailtoUrl;
+          toast.success("Email client opened with your feedback form!");
+          
+        } else if (shareMethod === 'copy') {
+          await navigator.clipboard.writeText(form.shareUrl);
+          toast.success("Feedback form link copied to clipboard!");
+        }
+      }
     } catch (error) {
-      toast.error("Failed to open email client. Please try again.");
+      toast.error("Failed to create form. Please try again.");
     } finally {
       setIsSharing(false);
     }
@@ -113,15 +99,15 @@ Best regards`;
       <div className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] pt-12 pb-8">
         <div className="flex items-center justify-between px-6 mb-4">
           <motion.button
-            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-lg"
             whileTap={{ scale: 0.9 }}
             onClick={handleGoBack}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M19 12H5M12 19L5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </motion.button>
-          <div className="w-10" />
+          <div className="w-12" />
         </div>
         
         <div className="text-center px-6">
@@ -158,7 +144,7 @@ Best regards`;
                   <span className="text-sm font-medium text-gray-500">Question {index + 1}</span>
                   {questions.length > 1 && (
                     <motion.button
-                      className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center"
+                      className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center shadow-md"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={() => handleQuestionDelete(question.id)}
@@ -181,7 +167,7 @@ Best regards`;
           </div>
 
           <motion.button
-            className="w-full h-12 bg-gradient-to-r from-gray-100 to-gray-200 border-2 border-dashed border-gray-300 rounded-2xl text-gray-600 font-medium flex items-center justify-center"
+            className="w-full h-12 bg-gradient-to-r from-gray-100 to-gray-200 border-2 border-dashed border-gray-300 rounded-2xl text-gray-600 font-medium flex items-center justify-center shadow-sm"
             whileHover={{ scale: 1.02, borderColor: "#74a4ee" }}
             whileTap={{ scale: 0.98 }}
             onClick={handleAddQuestion}
@@ -204,24 +190,24 @@ Best regards`;
           
           <div className="space-y-4">
             <motion.button
-              className="w-full h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl text-white font-bold flex items-center justify-center"
+              className="w-full h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl text-white font-bold flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleCopyLink}
+              onClick={() => createAndShareForm('copy')}
               disabled={isSharing}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-3">
                 <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              {isSharing ? "Generating Link..." : "Copy Shareable Link"}
+              {isSharing ? "Creating Form..." : "Copy Shareable Link"}
             </motion.button>
 
             <motion.button
-              className="w-full h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl text-white font-bold flex items-center justify-center"
+              className="w-full h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl text-white font-bold flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleShareWhatsApp}
+              onClick={() => createAndShareForm('whatsapp')}
               disabled={isSharing}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" className="mr-3">
@@ -231,10 +217,10 @@ Best regards`;
             </motion.button>
 
             <motion.button
-              className="w-full h-14 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl text-white font-bold flex items-center justify-center"
+              className="w-full h-14 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl text-white font-bold flex items-center justify-center shadow-lg"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleShareEmail}
+              onClick={() => createAndShareForm('email')}
               disabled={isSharing}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-3">

@@ -11,7 +11,7 @@ export const FooterNavBar = () => {
   };
 
   const renderIcon = (name, active) => {
-    const color = active ? '#74a4ee' : '#B3B3B3';
+    const color = active ? '#74a4ee' : '#6e6e6e';
     
     switch (name) {
       case 'home':
