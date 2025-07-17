@@ -53,8 +53,7 @@
       "label": "LoginSignup",
       "routes": [
         "/loginu38signup"
-      ],
-      "dataModelId": "680:1706"
+      ]
     },
     {
       "id": "src/screens/DivWrapper/DivWrapper.jsx",
@@ -77,8 +76,7 @@
       "label": "Enterotp",
       "routes": [
         "/enterotp"
-      ],
-      "dataModelId": "656:622"
+      ]
     },
     {
       "id": "src/routes/SelfAssessement/screens/SelfAssessement.jsx",
