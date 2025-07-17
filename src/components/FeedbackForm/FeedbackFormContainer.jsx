@@ -190,3 +190,13 @@ Best regards`;
                   width="100%" 
                   height="100%" 
                   frameBorder="0"
+                  onLoad={() => setIframeLoaded(true)}
+                />
+              </div>
+            </>
+          )}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
