@@ -14,115 +14,130 @@ export const DoctorProfile = () => {
   };
 
   return (
-    <div className="bg-white flex flex-col items-center w-full min-h-screen">
-      <div className="bg-[#6e9de3] w-[381px] min-h-screen relative overflow-hidden">
-        {/* Header */}
-        <div className="absolute w-full h-[60px] top-0 left-0 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-[#6e9de3] to-[#74a4ee] pt-12 pb-20">
+        <div className="flex items-center justify-between px-6">
           <motion.button
-            className="absolute left-4 w-9 h-[15px]"
+            className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
             whileTap={{ scale: 0.9 }}
             onClick={handleGoBack}
           >
-            <img
-              className="w-full h-full"
-              alt="Arrow"
-              src="https://c.animaapp.com/md5i17leZoCaAz/img/arrow-1.svg"
-            />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 12H5M12 19L5 12L12 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </motion.button>
+          <h1 className="text-white text-xl font-bold">Doctor Profile</h1>
+          <div className="w-10" />
         </div>
+      </div>
 
-        {/* Profile Image */}
-        <div className="absolute top-[100px] left-1/2 transform -translate-x-1/2 z-10">
-          <img
-            className="w-[120px] h-[120px] rounded-full object-cover border-4 border-white shadow-lg"
-            alt="Dr. Sarah Chen"
-            src="https://c.animaapp.com/md5i17leZoCaAz/img/ellipse-16.png"
-          />
-        </div>
-
-        {/* Main Content Card */}
+      {/* Profile Image - Centered */}
+      <div className="flex justify-center -mt-16 mb-6 z-10 relative">
         <motion.div
-          className="w-[350px] mx-auto bg-white rounded-[20px] shadow-lg pt-[80px] pb-6 px-6 mt-[160px] relative"
+          className="w-32 h-32 rounded-full border-4 border-white shadow-xl overflow-hidden bg-white"
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+        >
+          <img
+            className="w-full h-full object-cover"
+            alt="Dr. Sarah Chen"
+            src="https://images.pexels.com/photos/5327585/pexels-photo-5327585.jpeg?auto=compress&cs=tinysrgb&w=400"
+          />
+        </motion.div>
+      </div>
+
+      {/* Main Content */}
+      <div className="px-6">
+        <motion.div
+          className="bg-white rounded-3xl shadow-xl p-6"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
         >
+          {/* Doctor Info */}
           <div className="text-center mb-6">
-            <h2 className="font-bold text-black text-2xl">Dr. Sarah Chen</h2>
-            <p className="text-gray-700 text-base mt-1">
-              Clinical Psychologist | General Practitioner
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              MBBS, Fellow Certificate in Practical Psychology, MD - Medicine
-            </p>
+            <h2 className="text-2xl font-bold text-gray-800 mb-2">Dr. Sarah Chen</h2>
+            <p className="text-gray-600 text-lg mb-2">Clinical Psychologist</p>
+            <p className="text-gray-500 text-sm">MBBS, Fellow Certificate in Practical Psychology, MD - Medicine</p>
           </div>
 
-          {/* Experience and Rating */}
-          <div className="flex justify-between items-center mb-6">
-            <div className="text-gray-700 text-sm">
-              12 years overall experience
-            </div>
-            <div className="bg-blue-800 rounded-full px-3 py-1 text-white text-sm font-bold flex items-center">
-              4.8
-              <svg
-                className="w-3 h-3 ml-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M9.049 2.927c.3-.921 1.602-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.538 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.783.57-1.838-.197-1.538-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z" />
-              </svg>
-            </div>
-          </div>
-
-          {/* Consultations and Stories */}
-          <div className="flex justify-around items-center mb-6">
+          {/* Stats */}
+          <div className="flex justify-around items-center mb-6 py-4 bg-gray-50 rounded-2xl">
             <div className="text-center">
-              <p className="font-bold text-black text-lg">300+</p>
-              <p className="text-gray-500 text-sm">Consultations</p>
+              <p className="text-2xl font-bold text-[#74a4ee]">12</p>
+              <p className="text-sm text-gray-500">Years Exp</p>
             </div>
+            <div className="w-px h-12 bg-gray-300" />
             <div className="text-center">
-              <p className="font-bold text-black text-lg">128</p>
-              <p className="text-gray-500 text-sm underline cursor-pointer">Stories</p>
+              <div className="flex items-center justify-center mb-1">
+                <span className="text-2xl font-bold text-[#74a4ee] mr-1">4.8</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+              </div>
+              <p className="text-sm text-gray-500">Rating</p>
+            </div>
+            <div className="w-px h-12 bg-gray-300" />
+            <div className="text-center">
+              <p className="text-2xl font-bold text-[#74a4ee]">300+</p>
+              <p className="text-sm text-gray-500">Patients</p>
             </div>
           </div>
 
-          {/* Description */}
+          {/* About */}
           <div className="mb-6">
-            <p className="text-gray-700 text-base leading-relaxed">
-              Specializing in cognitive behavioral therapy and mindfulness-based
-              interventions for anxiety and depression.
+            <h3 className="text-lg font-bold text-gray-800 mb-3">About</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Specializing in cognitive behavioral therapy and mindfulness-based interventions for anxiety and depression. 
+              Dr. Chen has over 12 years of experience helping patients overcome mental health challenges and achieve personal growth.
             </p>
           </div>
 
-          {/* Story Tags */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              Depression
-            </span>
-            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              Trauma
-            </span>
-            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">
-              Empathy
-            </span>
+          {/* Specializations */}
+          <div className="mb-8">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">Specializations</h3>
+            <div className="flex flex-wrap gap-2">
+              {["Depression", "Anxiety", "Trauma", "Relationships", "Stress Management"].map((spec, index) => (
+                <motion.span
+                  key={spec}
+                  className="px-4 py-2 bg-blue-100 text-[#74a4ee] rounded-full text-sm font-medium"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + (index * 0.1) }}
+                >
+                  {spec}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+
+          {/* Consultation Fee */}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-4 mb-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">Consultation Fee</p>
+                <p className="text-2xl font-bold text-gray-800">$549</p>
+              </div>
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2V22M17 5H9.5C8.57174 5 7.6815 5.36875 7.02513 6.02513C6.36875 6.6815 6 7.57174 6 8.5C6 9.42826 6.36875 10.3185 7.02513 10.9749C7.6815 11.6312 8.57174 12 9.5 12H14.5C15.4283 12 16.3185 12.3687 16.9749 13.0251C17.6312 13.6815 18 14.5717 18 15.5C18 16.4283 17.6312 17.3185 16.9749 17.9749C16.3185 18.6312 15.4283 19 14.5 19H6" stroke="#10B981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </div>
           </div>
 
           {/* Book Session Button */}
           <motion.button
-            className="w-full h-12 bg-[#74a4ee] rounded-[25px] text-white text-lg font-bold shadow-md"
-            whileHover={{ scale: 1.03, boxShadow: "0px 6px 15px rgba(116,164,238,0.3)" }}
-            whileTap={{ scale: 0.97 }}
+            className="w-full h-14 bg-gradient-to-r from-[#74a4ee] to-[#9783d3] rounded-2xl text-white text-lg font-bold shadow-lg"
+            whileHover={{ scale: 1.02, boxShadow: "0px 8px 25px rgba(116,164,238,0.4)" }}
+            whileTap={{ scale: 0.98 }}
             onClick={handleBookSession}
           >
             Book Session
           </motion.button>
         </motion.div>
-
-        {/* Bottom Bar (if needed, though footer is global) */}
-        <div className="absolute w-full h-[34px] bottom-0 left-0 flex items-center justify-center">
-          <div className="w-[148px] h-[5px] bg-inkdarkest rounded-[100px]" />
-        </div>
       </div>
     </div>
   );

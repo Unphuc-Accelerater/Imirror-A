@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { FooterNavBar } from "../../../components/FooterNavBar";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const SelfAssessement = () => {
   const navigate = useNavigate();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
   const [showResults, setShowResults] = useState(false);
+  const [finalScore, setFinalScore] = useState(0);
 
   const questions = [
     {
       id: 1,
       text: "Do you often compare yourself to others?",
       options: ["Yes", "Sometimes", "No"],
-      type: "negative", // "No" is positive, "Yes" is negative
+      type: "negative",
     },
     {
       id: 2,
@@ -79,8 +79,9 @@ export const SelfAssessement = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
-      const finalScore = getScore(newAnswers);
-      localStorage.setItem("selfAssessmentScore", finalScore.toString());
+      const score = getScore(newAnswers);
+      setFinalScore(score);
+      localStorage.setItem("selfAssessmentScore", score.toString());
       setShowResults(true);
     }
   };
@@ -97,13 +98,20 @@ export const SelfAssessement = () => {
         if (question.type === "negative") {
           if (ans.answer === "No") score += 1;
           else if (ans.answer === "Sometimes") score += 0.5;
-        } else { // Positive questions
+        } else {
           if (ans.answer === "Yes" || ans.answer === "Often" || ans.answer === "Always" || ans.answer === "Very Confident") score += 1;
           else if (ans.answer === "Sometimes" || ans.answer === "Somewhat" || ans.answer === "Moderately Confident") score += 0.5;
         }
       }
     });
-    return (score / questions.length) * 100; // Percentage score
+    return (score / questions.length) * 100;
+  };
+
+  const getScoreColor = (score) => {
+    if (score >= 80) return { bg: "from-green-500 to-emerald-600", text: "Excellent" };
+    if (score >= 60) return { bg: "from-blue-500 to-cyan-600", text: "Good" };
+    if (score >= 40) return { bg: "from-yellow-500 to-orange-500", text: "Fair" };
+    return { bg: "from-red-500 to-pink-600", text: "Needs Improvement" };
   };
 
   const handleGoBack = () => {
@@ -119,100 +127,160 @@ export const SelfAssessement = () => {
   };
 
   const currentQuestion = questions[currentQuestionIndex];
+  const scoreData = getScoreColor(finalScore);
 
   return (
-    <div className="bg-white flex flex-col items-center w-full min-h-screen relative pb-20">
-      <div className="bg-white bg-[linear-gradient(136deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[381px] min-h-screen relative overflow-hidden">
-        {/* Header */}
-        <div className="absolute w-full h-[60px] top-0 left-0 bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center">
-          <motion.button
-            className="absolute left-4 w-[31px] h-[15px]"
-            whileTap={{ scale: 0.9 }}
-            onClick={handleGoBack}
-          >
-            <img
-              className="w-full h-full"
-              alt="Arrow"
-              src="https://c.animaapp.com/md5egsqeNVgn7E/img/arrow-1.svg"
-            />
-          </motion.button>
-          <h1 className="font-bold text-inkdarkest text-xl">Self-Assessment</h1>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+      {/* Header */}
+      <div className="bg-white/80 backdrop-blur-sm shadow-sm p-4 flex items-center justify-between">
+        <motion.button
+          className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center"
+          whileTap={{ scale: 0.9 }}
+          onClick={handleGoBack}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M12 19L5 12L12 5" stroke="#374151" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </motion.button>
+        <h1 className="text-xl font-bold text-gray-800">Self-Assessment</h1>
+        <div className="w-10" />
+      </div>
 
-        {/* Main Content Card */}
-        <div className="w-[350px] min-h-[calc(100vh-180px)] mt-[80px] mx-auto bg-[#f6f6f6] rounded-[35px] p-6 flex flex-col justify-between shadow-lg">
+      {/* Progress Bar */}
+      <div className="px-6 py-4">
+        <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
+          <motion.div
+            className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] h-3 rounded-full"
+            initial={{ width: 0 }}
+            animate={{ width: `${calculateProgress()}%` }}
+            transition={{ duration: 0.5 }}
+          />
+        </div>
+        <p className="text-sm text-gray-600 text-center">
+          {showResults ? "Complete!" : `Question ${currentQuestionIndex + 1} of ${questions.length}`}
+        </p>
+      </div>
+
+      {/* Main Content */}
+      <div className="px-6 flex-1">
+        <AnimatePresence mode="wait">
           {!showResults ? (
             <motion.div
               key={currentQuestionIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.3 }}
-              className="flex flex-col h-full"
+              className="bg-white rounded-3xl shadow-xl p-8 mx-auto max-w-md"
             >
-              <h2 className="text-lg font-semibold text-center mb-6 text-inkdarkest">
-                Question {currentQuestionIndex + 1} of {questions.length}
-              </h2>
-              <div className="bg-white rounded-[20px] p-6 flex-grow flex flex-col justify-center items-center text-center shadow-md">
-                <p className="text-base font-medium text-black mb-8">
-                  {currentQuestion.text}
-                </p>
-                <div className="flex flex-col space-y-4 w-full max-w-[250px]">
-                  {currentQuestion.options.map((option) => (
-                    <motion.button
-                      key={option}
-                      className="w-full h-[45px] bg-[#f5f7fc] rounded-[15px] border-2 border-solid border-[#e9eefd] text-inkdarkest font-medium text-base"
-                      whileHover={{ scale: 1.03, boxShadow: "0px 4px 10px rgba(0,0,0,0.1)" }}
-                      whileTap={{ scale: 0.97 }}
-                      onClick={() => handleAnswer(option)}
-                    >
-                      {option}
-                    </motion.button>
-                  ))}
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-r from-[#74a4ee] to-[#9783d3] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl font-bold">{currentQuestionIndex + 1}</span>
                 </div>
+                <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
+                  {currentQuestion.text}
+                </h2>
+              </div>
+
+              <div className="space-y-4">
+                {currentQuestion.options.map((option, index) => (
+                  <motion.button
+                    key={option}
+                    className="w-full p-4 bg-gray-50 hover:bg-blue-50 rounded-2xl border-2 border-transparent hover:border-[#74a4ee] transition-all text-left font-medium text-gray-700 hover:text-[#74a4ee]"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleAnswer(option)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    {option}
+                  </motion.button>
+                ))}
               </div>
             </motion.div>
           ) : (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="flex flex-col items-center justify-center h-full text-center"
+              className="bg-white rounded-3xl shadow-xl p-8 mx-auto max-w-md text-center"
             >
-              <h2 className="text-2xl font-bold text-inkdarkest mb-4">Assessment Complete!</h2>
-              <p className="text-lg text-gray-700 mb-6">Your Self-Assessment Score:</p>
               <motion.div
-                className="w-32 h-32 rounded-full bg-gradient-to-br from-[#74a4ee] to-[#9783d3] flex items-center justify-center text-white text-3xl font-bold shadow-lg"
+                className="mb-6"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
-                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
               >
-                {Math.round(getScore(answers))}%
+                <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-800 mb-2">Assessment Complete!</h2>
+                <p className="text-gray-600">Here's your self-reflection score</p>
               </motion.div>
-              <p className="text-sm text-gray-600 mt-4">Based on your answers, this is your current self-reflection score.</p>
-              <motion.button
-                className="mt-8 px-6 py-3 bg-[#74a4ee] text-white rounded-[48px] font-medium"
-                whileHover={{ scale: 1.05, boxShadow: "0px 5px 15px rgba(116,164,238,0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => navigate("/dashboard")}
+
+              {/* Score Display */}
+              <motion.div
+                className={`w-40 h-40 rounded-full bg-gradient-to-r ${scoreData.bg} flex flex-col items-center justify-center mx-auto mb-6 shadow-xl`}
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ delay: 0.5, type: "spring", stiffness: 150 }}
               >
-                Back to Dashboard
-              </motion.button>
+                <span className="text-white text-4xl font-bold">{Math.round(finalScore)}%</span>
+                <span className="text-white text-sm font-medium">{scoreData.text}</span>
+              </motion.div>
+
+              {/* Score Interpretation */}
+              <motion.div
+                className="bg-gray-50 rounded-2xl p-4 mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+              >
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {finalScore >= 80 && "Outstanding! You show excellent self-awareness and emotional well-being."}
+                  {finalScore >= 60 && finalScore < 80 && "Great job! You have good self-awareness with room for growth."}
+                  {finalScore >= 40 && finalScore < 60 && "You're on the right track. Focus on areas that need attention."}
+                  {finalScore < 40 && "This is a starting point. Consider seeking support for personal growth."}
+                </p>
+              </motion.div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <motion.button
+                  className="w-full h-12 bg-gradient-to-r from-[#74a4ee] to-[#9783d3] rounded-2xl text-white font-bold"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => navigate("/dashboard")}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  Back to Dashboard
+                </motion.button>
+                
+                <motion.button
+                  className="w-full h-12 bg-white border-2 border-[#74a4ee] rounded-2xl text-[#74a4ee] font-bold"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    setShowResults(false);
+                    setCurrentQuestionIndex(0);
+                    setAnswers([]);
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.9 }}
+                >
+                  Retake Assessment
+                </motion.button>
+              </div>
             </motion.div>
           )}
-
-          {/* Progress Bar */}
-          <div className="w-full bg-gray-200 rounded-full h-2.5 mt-8">
-            <motion.div
-              className="bg-[#74a4ee] h-2.5 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${calculateProgress()}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-        </div>
+        </AnimatePresence>
       </div>
-      <FooterNavBar />
     </div>
   );
 };
