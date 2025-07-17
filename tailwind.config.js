@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "color-background-brand-default":
-          "var(--color-background-brand-default)",
+        "color-background-brand-default": "var(--color-background-brand-default)",
         "color-background-brand-hover": "var(--color-background-brand-hover)",
         "color-border-brand-default": "var(--color-border-brand-default)",
         "color-primitives-brand-300": "var(--color-primitives-brand-300)",
@@ -36,13 +35,8 @@ module.exports = {
         skylight: "var(--skylight)",
         skywhite: "var(--skywhite)",
         "system-colors-labels-primary": "var(--system-colors-labels-primary)",
-        // Colors from new_route_configuration_files (MembershipPage)
-        "gray-800": "#2D3748",
-        "gray-500": "#A0AEC0",
-        "gray-100": "#F7FAFC",
-        "blue-500": "#4299E1",
-        "emerald-500": "#10B981",
-        "blue-800": "#2B6CB0",
+        skydark: "var(--skydark)",
+        primarylightest: "var(--primarylightest)",
       },
       fontFamily: {
         "body-base": "var(--body-base-font-family)",
@@ -64,7 +58,6 @@ module.exports = {
         "tiny-normal-regular": "var(--tiny-normal-regular-font-family)",
         "title-2": "var(--title-2-font-family)",
         "title-3": "var(--title-3-font-family)",
-        // Fonts from new_route_configuration_files (Settings and MembershipPage)
         "large-none-bold": "var(--large-none-bold-font-family)",
         "large-none-medium": "var(--large-none-medium-font-family)",
         "large-normal-bold": "var(--large-normal-bold-font-family)",
@@ -76,7 +69,38 @@ module.exports = {
         "drop-shadow-radius-24": "var(--drop-shadow-radius-24)",
         "drop-shadow-radius-4": "var(--drop-shadow-radius-4)",
       },
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      spacing: {
+        'safe-top': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.safe-area-pt': {
+          'padding-top': 'env(safe-area-inset-top)'
+        },
+        '.safe-area-pb': {
+          'padding-bottom': 'env(safe-area-inset-bottom)'
+        },
+        '.safe-area-pl': {
+          'padding-left': 'env(safe-area-inset-left)'
+        },
+        '.safe-area-pr': {
+          'padding-right': 'env(safe-area-inset-right)'
+        }
+      })
+    }
+  ],
 };

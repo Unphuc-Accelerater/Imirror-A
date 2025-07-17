@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { AuthProvider } from "./hooks/useAuth";
+import { ToastContainer } from "./components/UI/Toast";
+
+// Import screens
 import { Dashboard } from "./screens/Dashboard";
 import { DivWrapper } from "./screens/DivWrapper";
 import { Enterotp } from "./screens/Enterotp";
@@ -10,6 +14,8 @@ import { LoginSignup } from "./screens/LoginSignup";
 import { RequestFeedback } from "./screens/RequestFeedback";
 import { SetupProfile } from "./screens/SetupProfile";
 import { SplashScreen } from "./screens/SplashScreen";
+
+// Import route components
 import { SelfAssessement } from "./routes/SelfAssessement/screens/SelfAssessement";
 import { Settings } from "./routes/Settings/screens/Settings";
 import { MembershipPage } from "./routes/MembershipPage/screens/MembershipPage";
@@ -23,6 +29,8 @@ import { PaymentSelection } from "./routes/Payment/screens/PaymentSelection";
 import { PaymentSuccess } from "./routes/Payment/screens/PaymentSuccess";
 import { WriteReview, ThankYouConfirmation } from "./routes/Review";
 import { HelpFAQ } from "./routes/HelpFAQ/screens/HelpFAQ";
+
+// Import feedback forms
 import { PersonalGrowthForm } from "./routes/FeedbackForms/screens/PersonalGrowthForm";
 import { EmotionalIntelligenceForm } from "./routes/FeedbackForms/screens/EmotionalIntelligenceForm";
 import { RelationshipForm } from "./routes/FeedbackForms/screens/RelationshipForm";
@@ -168,17 +176,61 @@ const router = createBrowserRouter([
 ]);
 
 export const App = () => {
-  // Set up global styles for the app
   useEffect(() => {
-    // Add smooth scrolling to the entire app
+    // Set up global styles for mobile app
     document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Prevent overscroll/bounce effect on mobile
     document.body.style.overscrollBehavior = 'none';
+    document.body.style.fontFamily = 'Inter, system-ui, -apple-system, sans-serif';
     
-    // Set default font
-    document.body.style.fontFamily = 'Inter, sans-serif';
+    // Add mobile viewport meta tag if not present
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const meta = document.createElement('meta');
+      meta.name = 'viewport';
+      meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+      document.head.appendChild(meta);
+    }
+    
+    // Add mobile-specific styles
+    const style = document.createElement('style');
+    style.textContent = `
+      * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      input, textarea, button, select {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+      
+      .safe-area-pt {
+        padding-top: env(safe-area-inset-top);
+      }
+      
+      .safe-area-pb {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      
+      @media (max-width: 768px) {
+        body {
+          font-size: 16px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }, []);
 
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </AuthProvider>
+  );
 };

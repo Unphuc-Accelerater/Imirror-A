@@ -1,263 +1,252 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Component } from "../../components/Component";
-import { Bell } from "../../icons/Bell";
-import { Menu } from "../../icons/Menu";
-import { FooterNavBar } from "../../components/FooterNavBar";
 import { motion } from "framer-motion";
+import { Component } from "../../components/Component";
+import { MobileLayout } from "../../components/Layout/MobileLayout";
+import { LoadingSpinner } from "../../components/UI/LoadingSpinner";
+import { api } from "../../utils/api";
+import { storage } from "../../utils/storage";
 
 export const Dashboard = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [selfAssessmentScore, setSelfAssessmentScore] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Load user data from localStorage
-    const storedUserData = localStorage.getItem("userData");
-    if (storedUserData) {
-      setUserData(JSON.parse(storedUserData));
-    }
-
-    // Load profile image from localStorage
-    const storedProfileImage = localStorage.getItem("profileImage");
-    if (storedProfileImage) {
-      setProfileImage(storedProfileImage);
-    }
-
-    // Load self-assessment score from localStorage
-    const storedScore = localStorage.getItem("selfAssessmentScore");
-    if (storedScore) {
-      setSelfAssessmentScore(parseFloat(storedScore));
-    }
+    loadDashboardData();
   }, []);
 
+  const loadDashboardData = async () => {
+    try {
+      // Load user data
+      const userResponse = await api.getProfile();
+      if (userResponse.success && userResponse.data) {
+        setUserData(userResponse.data);
+      }
+
+      // Load profile image
+      const image = storage.getProfileImage();
+      if (image) {
+        setProfileImage(image);
+      }
+
+      // Load self-assessment score
+      const score = storage.getSelfAssessmentScore();
+      if (score) {
+        setSelfAssessmentScore(score);
+      }
+    } catch (error) {
+      console.error('Error loading dashboard data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const dashboardCards = [
+    {
+      title: "Request Feedback",
+      subtitle: "1/5 completed",
+      image: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400",
+      route: "/request-feedback",
+      gradient: "from-blue-400 to-blue-600"
+    },
+    {
+      title: "Self Assessment",
+      subtitle: "Try it now",
+      image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=400",
+      route: "/self-assessment",
+      gradient: "from-purple-400 to-purple-600"
+    },
+    {
+      title: "Journal Stories",
+      subtitle: "Write today",
+      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400",
+      route: "/journals",
+      gradient: "from-green-400 to-green-600"
+    },
+    {
+      title: "Coaches",
+      subtitle: "Find support",
+      image: "https://images.pexels.com/photos/3184317/pexels-photo-3184317.jpeg?auto=compress&cs=tinysrgb&w=400",
+      route: "/coaches",
+      gradient: "from-pink-400 to-pink-600"
+    }
+  ];
+
+  if (loading) {
+    return (
+      <MobileLayout showFooter={false}>
+        <div className="flex items-center justify-center h-full">
+          <LoadingSpinner size="lg" />
+        </div>
+      </MobileLayout>
+    );
+  }
+
   return (
-    <div
-      className="bg-white flex flex-row justify-center w-full"
-      data-model-id="681:926"
-    >
-      <div className="bg-white overflow-hidden bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[381px] h-[801px] relative">
+    <MobileLayout className="bg-gradient-to-br from-blue-50 via-white to-purple-50">
+      <div className="flex-1 overflow-y-auto">
         {/* Header */}
-        <div className="absolute w-full h-[80px] top-0 left-0 bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-between px-4">
-          <div className="flex items-center">
+        <motion.div 
+          className="bg-white/80 backdrop-blur-sm shadow-sm p-4 flex items-center justify-between"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex items-center space-x-3">
             <Component
-              className="!h-14 !w-14"
-              overlapGroupClassName="!h-[54px] !w-[54px]"
-              rectangleClassName="!h-[43px] !w-[29px] !top-[3px]"
-              rectangleClassNameOverride="!h-[43px] !left-3.5 !w-[29px] !top-[11px]"
+              className="!h-12 !w-12"
+              overlapGroupClassName="!h-[46px] !w-[44px]"
+              rectangleClassName="!h-[37px] !w-[25px] !top-1"
+              rectangleClassNameOverride="!h-[37px] !left-3 !w-[25px] !top-2"
               star="https://c.animaapp.com/hUOULd8k/img/star-5-2.svg"
-              starClassName="!h-[13px] !left-[41px] !w-[13px]"
+              starClassName="!h-[11px] !left-[33px] !w-[11px]"
             />
-            <div className="ml-2 font-open-sans-semibold font-[number:var(--open-sans-semibold-font-weight)] text-new-fill-000000 text-[length:var(--open-sans-semibold-font-size)] tracking-[var(--open-sans-semibold-letter-spacing)] leading-[var(--open-sans-semibold-line-height)] [font-style:var(--open-sans-semibold-font-style)]">
-              iMirror
-            </div>
+            <h1 className="text-xl font-bold text-gray-800">iMirror</h1>
           </div>
           
-          <div className="flex items-center gap-4">
-            {/* Profile Picture */}
-            {profileImage ? (
-              <motion.img
-                className="w-10 h-10 rounded-full object-cover border-2 border-[#74a4ee]"
-                alt="Profile"
-                src={profileImage}
-                whileHover={{ scale: 1.1 }}
-                onClick={() => navigate("/setupprofile")}
-              />
-            ) : (
-              <motion.img
-                className="w-10 h-10 rounded-full border-2 border-[#74a4ee]"
-                alt="Ellipse"
-                src="https://c.animaapp.com/hUOULd8k/img/ellipse-2@2x.png"
-                whileHover={{ scale: 1.1 }}
-                onClick={() => navigate("/setupprofile")}
-              />
-            )}
-            {/* Hamburger Menu */}
+          <div className="flex items-center space-x-3">
             <motion.button
-              className="w-10 h-10 rounded-full flex items-center justify-center bg-[#f8f5ff]"
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => navigate("/settings")}
+              className="w-10 h-10 rounded-full overflow-hidden border-2 border-blue-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/edit-profile')}
             >
-              <Menu className="!w-6 !h-6" />
+              {profileImage ? (
+                <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+              ) : (
+                <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold">
+                  {userData?.name ? userData.name[0].toUpperCase() : '?'}
+                </div>
+              )}
+            </motion.button>
+            
+            <motion.button
+              className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center"
+              whileHover={{ scale: 1.05, rotate: 90 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/settings')}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z" fill="#374151" />
+              </svg>
             </motion.button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Welcome Message */}
-        <div className="absolute top-[100px] left-0 right-0 px-6">
-          <motion.h1 
-            className="text-2xl font-bold text-[#333] mb-2"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            {userData?.name ? `Welcome, ${userData.name}!` : "Welcome!"}
-          </motion.h1>
-          <motion.p 
-            className="text-sm text-gray-600 mb-6"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            What would you like to do today?
-          </motion.p>
-        </div>
-
-        {/* Main Cards - First Row */}
-        <div className="absolute top-[160px] left-0 right-0 px-4 flex justify-between">
-          <Link to="/request-feedback" className="block w-[48%]">
-            <motion.div 
-              className="w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative"
-              whileHover={{ y: -5, boxShadow: "0px 10px 25px rgba(116,164,238,0.2)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-              <img
-                className="w-[50px] h-[50px] mb-3 object-cover"
-                alt="Image"
-                src="https://c.animaapp.com/hUOULd8k/img/image-26@2x.png"
-              />
-              <h3 className="font-bold text-[#333] text-center text-lg mb-1">Request Feedback</h3>
-              <span className="text-xs text-gray-500">1/5 completed</span>
-            </motion.div>
-          </Link>
-          
-          <Link to="/self-assessment" className="block w-[48%]">
-            <motion.div 
-              className="w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative"
-              whileHover={{ y: -5, boxShadow: "0px 10px 25px rgba(116,164,238,0.2)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-              <img
-                className="w-[50px] h-[50px] mb-3 object-cover"
-                alt="Image"
-                src="https://c.animaapp.com/hUOULd8k/img/image-28@2x.png"
-              />
-              <h3 className="font-bold text-[#333] text-center text-lg mb-1">Self Assessment</h3>
-              <span className="text-xs text-gray-500">Try it now</span>
-            </motion.div>
-          </Link>
-        </div>
-
-        {/* Main Cards - Second Row */}
-        <div className="absolute top-[350px] left-0 right-0 px-4 flex justify-between">
-          <Link to="/journals" className="block w-[48%]">
-            <motion.div 
-              className="w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative"
-              whileHover={{ y: -5, boxShadow: "0px 10px 25px rgba(116,164,238,0.2)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-              <img
-                className="w-[50px] h-[50px] mb-3"
-                alt="Open book"
-                src="https://c.animaapp.com/hUOULd8k/img/open-book@2x.png"
-              />
-              <h3 className="font-bold text-[#333] text-center text-lg mb-1">Journal Stories</h3>
-              <span className="text-xs text-gray-500">Write today</span>
-            </motion.div>
-          </Link>
-          
-          <Link to="/coaches" className="block w-[48%]">
-            <motion.div 
-              className="w-full h-[170px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex flex-col items-center justify-center relative"
-              whileHover={{ y: -5, boxShadow: "0px 10px 25px rgba(116,164,238,0.2)" }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-              <img
-                className="w-[50px] h-[50px] mb-3 object-cover"
-                alt="Image"
-                src="https://c.animaapp.com/hUOULd8k/img/image-27@2x.png"
-              />
-              <h3 className="font-bold text-[#333] text-center text-lg mb-1">Coaches</h3>
-              <span className="text-xs text-gray-500">Find support</span>
-            </motion.div>
-          </Link>
-        </div>
-
-        {/* My Sessions Card */}
+        {/* Welcome Section */}
         <motion.div 
-          className="absolute top-[540px] left-0 right-0 px-4"
+          className="p-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <div className="w-full h-[80px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex items-center px-6 relative">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-            <div className="w-[40px] h-[40px] bg-[#f0f7ff] rounded-full flex items-center justify-center mr-4">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 8V12L15 15" stroke="#74a4ee" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#74a4ee" strokeWidth="2"/>
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            {userData?.name ? `Welcome back, ${userData.name}!` : "Welcome back!"}
+          </h2>
+          <p className="text-gray-600">What would you like to do today?</p>
+        </motion.div>
+
+        {/* Dashboard Cards */}
+        <div className="px-6 pb-6">
+          <div className="grid grid-cols-2 gap-4 mb-6">
+            {dashboardCards.map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + (index * 0.1), duration: 0.5 }}
+              >
+                <Link to={card.route}>
+                  <motion.div 
+                    className="bg-white rounded-2xl p-4 shadow-lg h-40 flex flex-col items-center justify-center text-center relative overflow-hidden"
+                    whileHover={{ y: -5, scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${card.gradient}`} />
+                    <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-3">
+                      <img 
+                        src={card.image} 
+                        alt={card.title}
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
+                    </div>
+                    <h3 className="font-bold text-gray-800 text-sm mb-1">{card.title}</h3>
+                    <p className="text-xs text-gray-500">{card.subtitle}</p>
+                  </motion.div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* My Sessions Card */}
+          <motion.div
+            className="bg-white rounded-2xl p-4 shadow-lg mb-6 flex items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.5 }}
+            whileHover={{ scale: 1.01 }}
+          >
+            <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 8V12L15 15" stroke="#3B82F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B82F6" strokeWidth="2"/>
               </svg>
             </div>
             <div>
-              <h3 className="font-bold text-[#333] text-lg">My Sessions</h3>
-              <p className="text-xs text-gray-500">No upcoming sessions</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Updates Section */}
-        <motion.div 
-          className="absolute top-[640px] left-0 right-0 px-4 mb-[100px]"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9 }}
-        >
-          <h2 className="text-lg font-bold text-[#333] mb-3">Updates</h2>
-          <div className="w-full h-[60px] bg-white rounded-[15px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] flex items-center px-4">
-            <div className="w-[34px] h-[34px] bg-[#f0f7ff] rounded-full flex items-center justify-center mr-4">
-              <img
-                className="w-5 h-5"
-                alt="Vector"
-                src="https://c.animaapp.com/hUOULd8k/img/vector.svg"
-              />
-            </div>
-            <p className="font-medium text-[#333]">No new updates</p>
-          </div>
-        </motion.div>
-
-        {/* Self-Assessment Progress Card */}
-        {selfAssessmentScore !== null && (
-          <motion.div 
-            className="absolute top-[730px] left-0 right-0 px-4 mb-[100px]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0 }}
-          >
-            <h2 className="text-lg font-bold text-[#333] mb-3">Self-Assessment Progress</h2>
-            <div className="w-full h-[80px] bg-white rounded-[20px] shadow-[0px_5px_15px_rgba(0,0,0,0.05)] overflow-hidden flex items-center px-6 relative">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#74a4ee] to-[#9783d3]"></div>
-              <div className="flex-grow">
-                <h3 className="font-bold text-[#333] text-lg">Your Latest Score: {Math.round(selfAssessmentScore)}%</h3>
-                <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
-                  <motion.div
-                    className="bg-[#74a4ee] h-2.5 rounded-full"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${selfAssessmentScore}%` }}
-                    transition={{ duration: 1.0 }}
-                  />
-                </div>
-              </div>
-              <Link to="/self-assessment" className="ml-4 text-sm text-[#74a4ee] font-medium">View Details</Link>
+              <h3 className="font-bold text-gray-800">My Sessions</h3>
+              <p className="text-sm text-gray-500">No upcoming sessions</p>
             </div>
           </motion.div>
-        )}
 
-        <FooterNavBar />
+          {/* Self Assessment Progress */}
+          {selfAssessmentScore !== null && (
+            <motion.div
+              className="bg-white rounded-2xl p-4 shadow-lg mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.5 }}
+            >
+              <h3 className="font-bold text-gray-800 mb-3">Self-Assessment Progress</h3>
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm text-gray-600">Latest Score</span>
+                <span className="font-bold text-blue-600">{Math.round(selfAssessmentScore)}%</span>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2 mb-3">
+                <motion.div
+                  className="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${selfAssessmentScore}%` }}
+                  transition={{ delay: 1, duration: 1 }}
+                />
+              </div>
+              <Link to="/self-assessment" className="text-sm text-blue-600 font-medium">
+                Take Assessment Again →
+              </Link>
+            </motion.div>
+          )}
+
+          {/* Updates Section */}
+          <motion.div
+            className="bg-white rounded-2xl p-4 shadow-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.5 }}
+          >
+            <h3 className="font-bold text-gray-800 mb-3">Recent Updates</h3>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mr-3">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <p className="text-gray-600">No new updates</p>
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </MobileLayout>
   );
 };
