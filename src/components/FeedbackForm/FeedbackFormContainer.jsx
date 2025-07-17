@@ -217,7 +217,6 @@ Best regards`;
                     </svg>
                     Edit Form (Creator Only)
                   </motion.a>
-                  </motion.a>
                 </div>
               )}
 
@@ -245,6 +244,7 @@ Best regards`;
                   </div>
                 ))}
               </div>
+            </>
           )}
         </motion.div>
 
