@@ -85,6 +85,17 @@ export const RequestFeedback = () => {
               Choose a Template
             </h3>
           </div>
+          
+          {/* Selected Template Display */}
+          {selectedTemplate && (
+            <motion.div
+              className="mx-4 mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <p className="text-sm text-blue-700 font-medium">Selected: {selectedTemplate}</p>
+            </motion.div>
+          )}
 
           {/* Featured Template */}
           <motion.div
@@ -128,7 +139,7 @@ export const RequestFeedback = () => {
 
           {/* Send Request Button */}
           <motion.button
-            className={`absolute w-[317px] h-12 bottom-[20px] left-1/2 transform -translate-x-1/2 rounded-[48px] ${
+            className={`absolute w-[317px] h-12 bottom-[20px] left-[16px] rounded-[48px] ${
               selectedTemplate ? "bg-[#74a4ee]" : "bg-[#a8c9f8] cursor-not-allowed"
             }`}
             whileHover={selectedTemplate ? { scale: 1.03, boxShadow: "0px 5px 15px rgba(0,0,0,0.1)" } : {}}
@@ -136,7 +147,7 @@ export const RequestFeedback = () => {
             onClick={handleSendRequest}
             disabled={!selectedTemplate}
           >
-            <div className="absolute h-4 top-[15px] left-0 right-0 font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-white text-[length:var(--regular-none-medium-font-size)] text-center tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] whitespace-nowrap [font-style:var(--regular-none-medium-font-style)]">
+            <div className="h-4 font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-white text-[length:var(--regular-none-medium-font-size)] text-center tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] whitespace-nowrap [font-style:var(--regular-none-medium-font-style)]">
               Send Request
             </div>
           </motion.button>

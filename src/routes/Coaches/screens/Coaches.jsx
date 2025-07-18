@@ -102,7 +102,7 @@ export const Coaches = () => {
         </div>
       </div>
       <motion.button
-        className="absolute bottom-4 right-4 w-[100px] h-9 bg-[#74a4ee] rounded-[25px] text-white text-sm font-medium shadow-md"
+        className="absolute bottom-4 right-4 w-[100px] h-9 bg-blue-500 rounded-[25px] text-white text-sm font-medium shadow-md"
         whileHover={{ scale: 1.05, boxShadow: "0px 5px 15px rgba(116,164,238,0.3)" }}
         whileTap={{ scale: 0.95 }}
         onClick={() => navigate(coach.route)}
@@ -138,14 +138,22 @@ export const Coaches = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="w-[350px] h-[50px] mx-auto -mt-6 bg-white rounded-[25px] border border-solid border-[#7fabef] flex items-center px-4 shadow-md z-10">
+        <div className="w-[350px] h-[50px] mx-auto -mt-6 bg-white rounded-[25px] border border-solid border-[#7fabef] flex items-center px-4 shadow-md z-10 relative">
           <input
             type="text"
             placeholder="Search by name or specialty..."
-            className="flex-grow h-full bg-transparent outline-none text-black text-base pl-2"
+            className="flex-grow h-full bg-transparent outline-none text-black text-base pl-2 pr-8"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
+          <svg 
+            className="absolute right-4 w-5 h-5 text-gray-400" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
 
         {/* Filter Buttons */}

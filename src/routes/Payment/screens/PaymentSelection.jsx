@@ -104,6 +104,8 @@ export const PaymentSelection = () => {
     }
 
     if (validateForm() && isPayButtonEnabled) {
+      // Simulate payment processing
+      alert(`Processing payment of $549 via ${selectedMethod === 'card' ? 'Credit/Debit Card' : 'UPI'}...`);
       navigate("/payment-success");
     }
   };

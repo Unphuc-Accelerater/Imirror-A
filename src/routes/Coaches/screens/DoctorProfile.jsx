@@ -123,7 +123,7 @@ export const DoctorProfile = () => {
 
           {/* Book Session Button */}
           <motion.button
-            className="w-full h-14 bg-gradient-to-r from-[#74a4ee] to-[#9783d3] rounded-2xl text-white text-lg font-bold shadow-lg"
+            className="w-full h-14 bg-blue-500 rounded-2xl text-white text-lg font-bold shadow-lg"
             whileHover={{ scale: 1.02, boxShadow: "0px 8px 25px rgba(116,164,238,0.4)" }}
             whileTap={{ scale: 0.98 }}
             onClick={handleBookSession}

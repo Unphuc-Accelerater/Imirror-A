@@ -135,7 +135,7 @@ export const SetupProfile = () => {
           {/* Continue Button */}
           <motion.button
             type="submit"
-            className={`all-[unset] box-border absolute w-[309px] h-12 bottom-[60px] left-[20px] rounded-[48px] ${isValid ? 'bg-[#74a4ee]' : 'bg-[#a8c9f8] cursor-not-allowed'}`}
+            className={`all-[unset] box-border absolute w-[309px] h-12 bottom-[80px] left-[20px] rounded-[48px] ${isValid ? 'bg-[#74a4ee]' : 'bg-[#a8c9f8] cursor-not-allowed'}`}
             whileHover={isValid ? { scale: 1.03, boxShadow: "0px 5px 15px rgba(116,164,238,0.3)" } : {}}
             whileTap={isValid ? { scale: 0.97 } : {}}
             disabled={!isValid}
@@ -148,7 +148,7 @@ export const SetupProfile = () => {
           {/* Skip Button */}
           <motion.button
             type="button"
-            className="absolute w-[55px] h-[50px] bottom-[20px] left-[147px] font-regular-normal-regular font-[number:var(--regular-normal-regular-font-weight)] text-new-fill-4d1bf1 text-[length:var(--regular-normal-regular-font-size)] text-center tracking-[var(--regular-normal-regular-letter-spacing)] leading-[var(--regular-normal-regular-line-height)] [font-style:var(--regular-normal-regular-font-style)]"
+            className="absolute w-[80px] h-[40px] bottom-[30px] left-[135px] font-regular-normal-regular font-[number:var(--regular-normal-regular-font-weight)] text-new-fill-4d1bf1 text-[length:var(--regular-normal-regular-font-size)] text-center tracking-[var(--regular-normal-regular-letter-spacing)] leading-[var(--regular-normal-regular-line-height)] [font-style:var(--regular-normal-regular-font-style)] flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleSkip}

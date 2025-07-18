@@ -64,9 +64,18 @@ export const GetstartedScreen = () => {
           </Carousel>
         </div>
 
+        {/* Page Indicators */}
+        <div className="absolute bottom-[120px] left-0 right-0 flex justify-center space-x-2">
+          <div className="w-2 h-2 bg-gray-400 rounded-full opacity-30" />
+          <div className="w-2 h-2 bg-gray-800 rounded-full" />
+          <div className="w-2 h-2 bg-gray-400 rounded-full opacity-30" />
+        </div>
+        
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-300" />
+
         <motion.div
-          whileHover={{ scale: 1.05, boxShadow: "0px 10px 25px rgba(116,164,238,0.5)" }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           className="absolute left-[59px] bottom-[60px] w-[272px]"
         >
           <Button
@@ -75,7 +84,7 @@ export const GetstartedScreen = () => {
             size="medium"
             stateProp="default"
             variant="primary"
-            variantPrimaryClassName="!border-[#7fabef] !h-[49px] !rounded-[25px] !shadow-[0px_7px_16px_#0000001a] !flex !w-full !bg-new-fill-74a4ee"
+            variantPrimaryClassName="!border-[#7fabef] !h-[49px] !rounded-[25px] !shadow-[0px_4px_12px_rgba(116,164,238,0.25)] !flex !w-full !bg-new-fill-74a4ee"
             to="/loginu38signup"
           />
         </motion.div>
