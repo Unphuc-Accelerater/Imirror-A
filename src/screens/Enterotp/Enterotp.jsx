@@ -145,20 +145,9 @@ export const Enterotp = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 flex flex-col">
-      {/* Status Bar */}
-      <div className="h-11 bg-white/80 backdrop-blur-sm flex items-center justify-between px-4 text-sm font-medium text-gray-900">
-        <span>9:41</span>
-        <div className="flex items-center space-x-1">
-          <div className="w-4 h-2.5 bg-gray-900 rounded-sm" />
-          <div className="w-4 h-3 border border-gray-900 rounded-sm">
-            <div className="w-2.5 h-1.5 bg-gray-900 rounded-sm m-0.5" />
-          </div>
-        </div>
-      </div>
-
       {/* Header */}
       <motion.div 
-        className="flex items-center justify-center p-6 relative"
+        className="flex items-center justify-center p-6 pt-8 relative"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}

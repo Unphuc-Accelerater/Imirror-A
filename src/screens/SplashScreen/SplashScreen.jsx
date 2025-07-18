@@ -15,7 +15,7 @@ export const SplashScreen = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-blue-100 via-purple-50 to-pink-100 flex flex-col items-center justify-center relative overflow-hidden pt-0">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)]" />
       

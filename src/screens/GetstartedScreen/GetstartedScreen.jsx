@@ -44,7 +44,7 @@ export const GetstartedScreen = () => {
       data-model-id="681:880"
     >
       <div className="bg-white bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[381px] h-[801px] relative">
-        <div className="absolute top-[168px] left-0 right-0 bottom-[150px]">
+        <div className="absolute top-[120px] left-0 right-0 bottom-[100px]">
           <Carousel>
             <GetStartedCard
               title="Anonymous Feedback"
@@ -64,19 +64,10 @@ export const GetstartedScreen = () => {
           </Carousel>
         </div>
 
-        {/* Page Indicators */}
-        <div className="absolute bottom-[120px] left-0 right-0 flex justify-center space-x-2">
-          <div className="w-2 h-2 bg-gray-400 rounded-full opacity-30" />
-          <div className="w-2 h-2 bg-gray-800 rounded-full" />
-          <div className="w-2 h-2 bg-gray-400 rounded-full opacity-30" />
-        </div>
-        
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gray-300" />
-
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="absolute left-[59px] bottom-[60px] w-[272px]"
+          className="absolute left-[59px] bottom-[40px] w-[272px]"
         >
           <Button
             divClassName="!mt-[unset]"

@@ -76,7 +76,7 @@ export const Journals = () => {
     >
       <div className="bg-white bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[380px] h-[801px] relative">
         {/* Header */}
-        <div className="absolute w-full h-[60px] top-0 left-0 bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center">
+        <div className="absolute w-full h-[60px] top-0 left-0 bg-white/80 backdrop-blur-sm shadow-sm flex items-center justify-center pt-2">
           <div className="absolute w-[317px] font-title-3 font-[number:var(--title-3-font-weight)] text-inkdarkest text-[length:var(--title-3-font-size)] text-center tracking-[var(--title-3-letter-spacing)] leading-[var(--title-3-line-height)] [font-style:var(--title-3-font-style)]">
             Journal
           </div>
@@ -216,99 +216,6 @@ export const Journals = () => {
         </div>
 
         <FooterNavBar />
-
-        {/* Journal Entry Modal */}
-        <AnimatePresence>
-          {isModalOpen && (
-            <motion.div
-              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <motion.div
-                className="bg-white rounded-[20px] w-[320px] p-6"
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.8, opacity: 0 }}
-              >
-                <h2 className="text-xl font-bold mb-4 text-center">New Journal Entry</h2>
-                
-                <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">How are you feeling?</label>
-                  <div className="flex justify-around">
-                    <motion.button
-                      className={`p-2 rounded-full ${selectedMood === "Excited" ? "bg-blue-100" : ""}`}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleMoodSelect("Excited")}
-                    >
-                      <span className="text-2xl">😄</span>
-                    </motion.button>
-                    
-                    <motion.button
-                      className={`p-2 rounded-full ${selectedMood === "Happy" ? "bg-blue-100" : ""}`}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleMoodSelect("Happy")}
-                    >
-                      <span className="text-2xl">😊</span>
-                    </motion.button>
-                    
-                    <motion.button
-                      className={`p-2 rounded-full ${selectedMood === "Neutral" ? "bg-blue-100" : ""}`}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleMoodSelect("Neutral")}
-                    >
-                      <span className="text-2xl">😐</span>
-                    </motion.button>
-                    
-                    <motion.button
-                      className={`p-2 rounded-full ${selectedMood === "Sad" ? "bg-blue-100" : ""}`}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={() => handleMoodSelect("Sad")}
-                    >
-                      <span className="text-2xl">😢</span>
-                    </motion.button>
-                  </div>
-                </div>
-                
-                <div className="mb-4">
-                  <label className="block text-sm font-medium mb-2">What's on your mind?</label>
-                  <textarea
-                    className="w-full h-32 p-4 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#74a4ee]/30 focus:border-[#74a4ee]"
-                    placeholder="Write your thoughts here..."
-                    value={journalText}
-                    onChange={(e) => setJournalText(e.target.value)}
-                  ></textarea>
-                </div>
-                
-                <div className="flex justify-end space-x-2">
-                  <motion.button
-                    className="px-4 py-2 bg-gray-100 rounded-md text-gray-700"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleCloseModal}
-                  >
-                    Cancel
-                  </motion.button>
-                  
-                  <motion.button
-                    className={`px-4 py-2 rounded-md ${
-                      selectedMood && journalText.trim() 
-                        ? "bg-[#74a4ee] text-white" 
-                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
-                    }`}
-                    whileHover={selectedMood && journalText.trim() ? { scale: 1.05 } : {}}
-                    whileTap={selectedMood && journalText.trim() ? { scale: 0.95 } : {}}
-                    onClick={handleSaveEntry}
-                    disabled={!selectedMood || !journalText.trim()}
-                  >
-                    Save
-                  </motion.button>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </div>
   );

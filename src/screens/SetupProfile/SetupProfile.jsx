@@ -45,7 +45,7 @@ export const SetupProfile = () => {
       data-model-id="718:360"
     >
       <div className="bg-white bg-[linear-gradient(168deg,rgba(219,234,254,1)_11%,rgba(202,225,254,1)_43%,rgba(252,231,243,1)_100%)] w-[380px] h-[801px] relative">
-        <div className="absolute w-[333px] h-8 top-[69px] left-4">
+        <div className="absolute w-[333px] h-8 top-[20px] left-4">
           <div className="absolute w-[317px] top-0 left-4 font-title-3 font-[number:var(--title-3-font-weight)] text-inkdarkest text-[length:var(--title-3-font-size)] text-center tracking-[var(--title-3-letter-spacing)] leading-[var(--title-3-line-height)] [font-style:var(--title-3-font-style)]">
             Set up Profile
           </div>
@@ -63,7 +63,7 @@ export const SetupProfile = () => {
           </motion.button>
         </div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="absolute w-[350px] h-[614px] top-[122px] left-[15px] bg-white rounded-[40px] border border-solid border-[#e9eefd] shadow-[0px_0px_35.3px_#00000017] pb-[100px]">
+        <form onSubmit={handleSubmit(onSubmit)} className="absolute w-[350px] h-[614px] top-[70px] left-[15px] bg-white rounded-[40px] border border-solid border-[#e9eefd] shadow-[0px_0px_35.3px_#00000017] pb-[100px]">
           {/* Profile Image Upload */}
           <motion.div 
             className="absolute w-[162px] h-[162px] top-[45px] left-[94px] bg-[#ecedff] rounded-[81px] overflow-hidden shadow-[0px_5px_15px_rgba(151,131,211,0.3)]"
@@ -135,7 +135,7 @@ export const SetupProfile = () => {
           {/* Continue Button */}
           <motion.button
             type="submit"
-            className={`all-[unset] box-border absolute w-[309px] h-12 bottom-[80px] left-[20px] rounded-[48px] ${isValid ? 'bg-[#74a4ee]' : 'bg-[#a8c9f8] cursor-not-allowed'}`}
+            className={`all-[unset] box-border absolute w-[309px] h-12 bottom-[60px] left-[20px] rounded-[48px] ${isValid ? 'bg-[#74a4ee]' : 'bg-[#a8c9f8] cursor-not-allowed'}`}
             whileHover={isValid ? { scale: 1.03, boxShadow: "0px 5px 15px rgba(116,164,238,0.3)" } : {}}
             whileTap={isValid ? { scale: 0.97 } : {}}
             disabled={!isValid}
@@ -148,7 +148,7 @@ export const SetupProfile = () => {
           {/* Skip Button */}
           <motion.button
             type="button"
-            className="absolute w-[80px] h-[40px] bottom-[30px] left-[135px] font-regular-normal-regular font-[number:var(--regular-normal-regular-font-weight)] text-new-fill-4d1bf1 text-[length:var(--regular-normal-regular-font-size)] text-center tracking-[var(--regular-normal-regular-letter-spacing)] leading-[var(--regular-normal-regular-line-height)] [font-style:var(--regular-normal-regular-font-style)] flex items-center justify-center"
+            className="absolute w-[309px] h-12 bottom-[10px] left-[20px] rounded-[48px] bg-white border-2 border-[#74a4ee] text-[#74a4ee] font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-[length:var(--regular-none-medium-font-size)] text-center tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] [font-style:var(--regular-none-medium-font-style)] flex items-center justify-center"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleSkip}
@@ -156,38 +156,6 @@ export const SetupProfile = () => {
             Skip
           </motion.button>
         </form>
-
-        <div className="absolute w-[380px] h-11 top-0 left-0 bg-skywhite">
-          <div className="left-[30px] text-inkdarkest absolute h-4 top-[15px] font-regular-none-medium font-[number:var(--regular-none-medium-font-weight)] text-[length:var(--regular-none-medium-font-size)] tracking-[var(--regular-none-medium-letter-spacing)] leading-[var(--regular-none-medium-line-height)] whitespace-nowrap [font-style:var(--regular-none-medium-font-style)]">
-            9:41
-          </div>
-
-          <img
-            className="absolute w-[18px] h-2.5 top-5 left-[293px]"
-            alt="Mobile signal"
-            src="https://c.animaapp.com/hUOULd8k/img/mobile-signal-3@2x.png"
-          />
-
-          <div className="absolute w-[15px] h-[11px] top-[19px] left-[316px] bg-[url(https://c.animaapp.com/hUOULd8k/img/union-2.svg)] bg-[100%_100%]" />
-
-          <div className="absolute w-[27px] h-[13px] top-[18px] left-[337px]">
-            <div className="relative h-[13px]">
-              <div className="absolute w-[25px] h-[13px] top-0 left-0 bg-[url(https://c.animaapp.com/hUOULd8k/img/rectangle-6.svg)] bg-[100%_100%]">
-                <img
-                  className="absolute w-5 h-2 top-0.5 left-0.5"
-                  alt="Rectangle"
-                  src="https://c.animaapp.com/hUOULd8k/img/rectangle-5.svg"
-                />
-              </div>
-
-              <img
-                className="absolute w-px h-1 top-[5px] left-[26px]"
-                alt="Combined shape"
-                src="https://c.animaapp.com/hUOULd8k/img/combined-shape-2.svg"
-              />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );

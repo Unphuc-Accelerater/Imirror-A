@@ -90,7 +90,7 @@ export const Dashboard = () => {
       <div className="flex-1 overflow-y-auto">
         {/* Header */}
         <motion.div 
-          className="bg-white/80 backdrop-blur-sm shadow-sm p-4 flex items-center justify-between"
+          className="bg-white/80 backdrop-blur-sm shadow-sm p-4 pt-6 flex items-center justify-between"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}

@@ -15,6 +15,7 @@ export const PaymentSelection = () => {
   const [upiId, setUpiId] = useState("");
   const [isPayButtonEnabled, setIsPayButtonEnabled] = useState(false);
   const [errors, setErrors] = useState({});
+  const [processing, setProcessing] = useState(false);
 
   useEffect(() => {
     let enabled = false;
@@ -97,23 +98,47 @@ export const PaymentSelection = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handlePay = () => {
+  const handlePay = async () => {
     if (!selectedMethod) {
       alert("Please select a payment method");
       return;
     }
 
     if (validateForm() && isPayButtonEnabled) {
+      setProcessing(true);
+      
       // Simulate payment processing
-      alert(`Processing payment of $549 via ${selectedMethod === 'card' ? 'Credit/Debit Card' : 'UPI'}...`);
-      navigate("/payment-success");
+      try {
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        // Store payment details in localStorage for demo
+        const paymentData = {
+          method: selectedMethod,
+          amount: 549,
+          timestamp: new Date().toISOString(),
+          ...(selectedMethod === 'card' ? {
+            cardNumber: cardDetails.cardNumber.slice(-4),
+            cardholderName: cardDetails.cardholderName
+          } : {
+            upiId: upiId
+          })
+        };
+        
+        localStorage.setItem('lastPayment', JSON.stringify(paymentData));
+        
+        navigate("/payment-success");
+      } catch (error) {
+        alert("Payment failed. Please try again.");
+      } finally {
+        setProcessing(false);
+      }
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#6e9de3] to-[#74a4ee] pt-12 pb-8">
+      <div className="bg-gradient-to-r from-[#6e9de3] to-[#74a4ee] pt-8 pb-8">
         <div className="flex items-center justify-between px-6 mb-6">
           <BackButton onClick={handleGoBack} style="dark" />
           <h1 className="text-white text-xl font-bold">Payment</h1>
@@ -185,6 +210,7 @@ export const PaymentSelection = () => {
                   className="space-y-4 overflow-hidden"
                 >
                   <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
                     <input
                       type="text"
                       name="cardNumber"
@@ -200,6 +226,7 @@ export const PaymentSelection = () => {
                   
                   <div className="flex space-x-4">
                     <div className="flex-1">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
                       <input
                         type="text"
                         name="expiryDate"
@@ -213,6 +240,7 @@ export const PaymentSelection = () => {
                       {errors.expiryDate && <p className="text-red-500 text-sm mt-1">{errors.expiryDate}</p>}
                     </div>
                     <div className="flex-1">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">CVV</label>
                       <input
                         type="text"
                         name="cvv"
@@ -228,10 +256,11 @@ export const PaymentSelection = () => {
                   </div>
                   
                   <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Cardholder Name</label>
                     <input
                       type="text"
                       name="cardholderName"
-                      placeholder="Cardholder Name"
+                      placeholder="John Doe"
                       value={cardDetails.cardholderName}
                       onChange={handleCardInputChange}
                       className={`w-full h-12 px-4 rounded-xl border-2 focus:outline-none transition-colors ${
@@ -294,6 +323,7 @@ export const PaymentSelection = () => {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
+                  <label className="block text-sm font-medium text-gray-700 mb-2">UPI ID</label>
                   <input
                     type="text"
                     name="upiId"
@@ -309,23 +339,45 @@ export const PaymentSelection = () => {
               )}
             </AnimatePresence>
           </motion.div>
+
+          {/* Security Notice */}
+          <div className="mt-6 p-4 bg-green-50 rounded-2xl border border-green-200">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 22S8 18 8 12V5L12 3L16 5V12C16 18 12 22 12 22Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-semibold text-green-800 text-sm">Secure Payment</h4>
+                <p className="text-green-700 text-xs">Your payment information is encrypted and secure</p>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
 
       {/* Pay Button */}
       <div className="fixed bottom-0 left-0 right-0 p-6 bg-white border-t border-gray-100">
         <motion.button
-          className={`w-full h-14 rounded-2xl font-bold text-lg transition-all ${
-            isPayButtonEnabled && selectedMethod
+          className={`w-full h-14 rounded-2xl font-bold text-lg transition-all flex items-center justify-center ${
+            isPayButtonEnabled && selectedMethod && !processing
               ? "bg-gradient-to-r from-[#74a4ee] to-[#9783d3] text-white shadow-lg" 
               : "bg-gray-200 text-gray-400 cursor-not-allowed"
           }`}
-          whileHover={isPayButtonEnabled && selectedMethod ? { scale: 1.02 } : {}}
-          whileTap={isPayButtonEnabled && selectedMethod ? { scale: 0.98 } : {}}
+          whileHover={isPayButtonEnabled && selectedMethod && !processing ? { scale: 1.02 } : {}}
+          whileTap={isPayButtonEnabled && selectedMethod && !processing ? { scale: 0.98 } : {}}
           onClick={handlePay}
-          disabled={!isPayButtonEnabled || !selectedMethod}
+          disabled={!isPayButtonEnabled || !selectedMethod || processing}
         >
-          Pay $549
+          {processing ? (
+            <>
+              <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+              Processing...
+            </>
+          ) : (
+            "Pay $549"
+          )}
         </motion.button>
       </div>
     </div>

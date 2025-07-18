@@ -276,7 +276,7 @@ export const Messages = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] pt-12 pb-6">
+      <div className="bg-gradient-to-r from-[#74a4ee] to-[#9783d3] pt-8 pb-6">
         <div className="flex items-center justify-between px-6">
           <BackButton onClick={handleGoBack} style="dark" />
           <h1 className="text-white text-xl font-bold">Messages</h1>
