@@ -320,15 +320,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:183:10-to-src/routes/Notification/screens/Notification.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:162:10-to-src/routes/Notification/screens/Notification.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/Notification/screens/Notification.jsx",
       "data": {
         "viaRoute": "/notifications",
         "trigger": {
           "element": "<NavItem name=\"notifications\" label=\"Alerts\" routeName=\"/notifications\" />",
-          "line": 183,
-          "endLine": 183,
+          "line": 162,
+          "endLine": 162,
           "column": 10,
           "endColumn": 84,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -336,15 +336,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:184:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:163:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
         "viaRoute": "/edit-profile",
         "trigger": {
           "element": "<NavItem name=\"profile\" label=\"Profile\" routeName=\"/edit-profile\" />",
-          "line": 184,
-          "endLine": 184,
+          "line": 163,
+          "endLine": 163,
           "column": 10,
           "endColumn": 78,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -480,15 +480,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:183:10-to-src/routes/Notification/screens/Notification.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:162:10-to-src/routes/Notification/screens/Notification.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/Notification/screens/Notification.jsx",
       "data": {
         "viaRoute": "/notifications",
         "trigger": {
           "element": "<NavItem name=\"notifications\" label=\"Alerts\" routeName=\"/notifications\" />",
-          "line": 183,
-          "endLine": 183,
+          "line": 162,
+          "endLine": 162,
           "column": 10,
           "endColumn": 84,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -496,15 +496,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:184:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:163:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
         "viaRoute": "/edit-profile",
         "trigger": {
           "element": "<NavItem name=\"profile\" label=\"Profile\" routeName=\"/edit-profile\" />",
-          "line": 184,
-          "endLine": 184,
+          "line": 163,
+          "endLine": 163,
           "column": 10,
           "endColumn": 78,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -550,7 +550,7 @@
       "data": {
         "viaRoute": "/loginu38signup",
         "trigger": {
-          "element": "<Button\n            divClassName=\"!mt-[unset]\"\n            label=\"Get Started\"\n            size=\"medium\"\n            stateProp=\"default\"\n            variant=\"primary\"\n            variantPrimaryClassName=\"!border-[#7fabef] !h-[49px] !rounded-[25px] !shadow-[0px_7px_16px_#0000001a] !flex !w-full !bg-new-fill-74a4ee\"\n            to=\"/loginu38signup\"\n          />",
+          "element": "<Button\n            divClassName=\"!mt-[unset]\"\n            label=\"Get Started\"\n            size=\"medium\"\n            stateProp=\"default\"\n            variant=\"primary\"\n            variantPrimaryClassName=\"!border-[#7fabef] !h-[49px] !rounded-[25px] !shadow-[0px_4px_12px_rgba(116,164,238,0.25)] !flex !w-full !bg-new-fill-74a4ee\"\n            to=\"/loginu38signup\"\n          />",
           "line": 72,
           "endLine": 80,
           "column": 10,
@@ -656,15 +656,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:183:10-to-src/routes/Notification/screens/Notification.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:162:10-to-src/routes/Notification/screens/Notification.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/Notification/screens/Notification.jsx",
       "data": {
         "viaRoute": "/notifications",
         "trigger": {
           "element": "<NavItem name=\"notifications\" label=\"Alerts\" routeName=\"/notifications\" />",
-          "line": 183,
-          "endLine": 183,
+          "line": 162,
+          "endLine": 162,
           "column": 10,
           "endColumn": 84,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -672,15 +672,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:184:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:163:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
         "viaRoute": "/edit-profile",
         "trigger": {
           "element": "<NavItem name=\"profile\" label=\"Profile\" routeName=\"/edit-profile\" />",
-          "line": 184,
-          "endLine": 184,
+          "line": 163,
+          "endLine": 163,
           "column": 10,
           "endColumn": 78,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -896,17 +896,17 @@
       }
     },
     {
-      "id": "src/routes/Payment/screens/PaymentSelection.jsx:107:6-to-src/routes/Payment/screens/PaymentSuccess.jsx",
+      "id": "src/routes/Payment/screens/PaymentSelection.jsx:129:8-to-src/routes/Payment/screens/PaymentSuccess.jsx",
       "source": "src/routes/Payment/screens/PaymentSelection.jsx",
       "target": "src/routes/Payment/screens/PaymentSuccess.jsx",
       "data": {
         "viaRoute": "/payment-success",
         "trigger": {
           "element": "navigate(\"/payment-success\")",
-          "line": 107,
-          "endLine": 107,
-          "column": 6,
-          "endColumn": 34,
+          "line": 129,
+          "endLine": 129,
+          "column": 8,
+          "endColumn": 36,
           "sourceFile": "src/routes/Payment/screens/PaymentSelection.jsx"
         }
       }
@@ -1088,15 +1088,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:183:10-to-src/routes/Notification/screens/Notification.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:162:10-to-src/routes/Notification/screens/Notification.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/Notification/screens/Notification.jsx",
       "data": {
         "viaRoute": "/notifications",
         "trigger": {
           "element": "<NavItem name=\"notifications\" label=\"Alerts\" routeName=\"/notifications\" />",
-          "line": 183,
-          "endLine": 183,
+          "line": 162,
+          "endLine": 162,
           "column": 10,
           "endColumn": 84,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -1104,15 +1104,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:184:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:163:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
         "viaRoute": "/edit-profile",
         "trigger": {
           "element": "<NavItem name=\"profile\" label=\"Profile\" routeName=\"/edit-profile\" />",
-          "line": 184,
-          "endLine": 184,
+          "line": 163,
+          "endLine": 163,
           "column": 10,
           "endColumn": 78,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -1168,15 +1168,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:183:10-to-src/routes/Notification/screens/Notification.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:162:10-to-src/routes/Notification/screens/Notification.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/Notification/screens/Notification.jsx",
       "data": {
         "viaRoute": "/notifications",
         "trigger": {
           "element": "<NavItem name=\"notifications\" label=\"Alerts\" routeName=\"/notifications\" />",
-          "line": 183,
-          "endLine": 183,
+          "line": 162,
+          "endLine": 162,
           "column": 10,
           "endColumn": 84,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
@@ -1184,15 +1184,15 @@
       }
     },
     {
-      "id": "src/components/FooterNavBar/FooterNavBar.jsx:184:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
+      "id": "src/components/FooterNavBar/FooterNavBar.jsx:163:10-to-src/routes/EditProfile/screens/EditProfile.jsx",
       "source": "src/screens/Journals/Journals.jsx",
       "target": "src/routes/EditProfile/screens/EditProfile.jsx",
       "data": {
         "viaRoute": "/edit-profile",
         "trigger": {
           "element": "<NavItem name=\"profile\" label=\"Profile\" routeName=\"/edit-profile\" />",
-          "line": 184,
-          "endLine": 184,
+          "line": 163,
+          "endLine": 163,
           "column": 10,
           "endColumn": 78,
           "sourceFile": "src/components/FooterNavBar/FooterNavBar.jsx"
